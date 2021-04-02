@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+
+    <EditText
+        android:id="@+id/txtUsername"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="230dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Username"
+        android:textColor="@color/white"
+        android:textFontWeight="@android:integer/config_longAnimTime"
+        android:textSize="30sp"
+        android:background="@android:color/transparent"
+        android:textStyle="normal" />
+
+    <ImageView
+        android:id="@+id/img_icPerson"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="-45dp"
+        android:layout_marginRight="60dp"
+        app:srcCompat="@drawable/ic_person" />
+
+    <TextView
+        android:id="@+id/txtUnderLine"
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
+
+        android:layout_marginTop="10dp"
+        android:layout_weight="0"
+        android:background="@color/black"
+        android:text="TextView" />
+
+    <EditText
+        android:id="@+id/txtPassword"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:text="Password"
+        android:textColor="@color/white"
+        android:textFontWeight="@android:integer/config_longAnimTime"
+        android:textSize="30sp"
+        android:textStyle="normal"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:background="@android:color/transparent"
+        />
+    <ImageView
+        android:id="@+id/img_icLock"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="-45dp"
+        android:layout_marginRight="60dp"
+        app:srcCompat="@drawable/ic_lock" />
+
+
+    <TextView
+        android:id="@+id/txtUnderLine2"
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0"
+        android:background="@color/black"
+        android:text="TextView" />
+    <TextView
+        android:id="@+id/txtForgetPass"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="Remember me?"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bglogin"
+        android:text="Login"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:backgroundTintMode="multiply" />
+
+    <Button
+        android:id="@+id/btnCreateAcc"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="190dp"
+        android:text="Create an Account?"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textAllCaps="false"
+        android:background="@android:color/transparent"
+        app:backgroundTintMode="multiply"
+        />
+
+
+</LinearLayout>
+

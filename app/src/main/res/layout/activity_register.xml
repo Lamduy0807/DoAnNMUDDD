@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/login"
+    tools:context=".RegisterActivity">
+
+    <EditText
+        android:id="@+id/txtEmail"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:textColor="@color/white"
+        android:background="@android:color/transparent"
+        android:textSize="30sp"
+        android:text="Email"
+        android:textStyle="normal"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="220dp"/>
+
+    <ImageView
+        android:id="@+id/imgEmail"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="-45dp"
+        android:layout_marginRight="60dp"
+        app:srcCompat="@drawable/ic_mail_outline_24px" />
+    <TextView
+        android:id="@+id/txtUnderLine3"
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0"
+        android:background="@color/black"
+        android:text="TextView" />
+
+    <EditText
+        android:id="@+id/txtUsername"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Username"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:background="@android:color/transparent"
+        android:textStyle="normal" />
+
+    <ImageView
+        android:id="@+id/imgUsername"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="-45dp"
+        android:layout_marginRight="60dp"
+        app:srcCompat="@drawable/ic_person" />
+
+    <TextView
+        android:id="@+id/txtUnderLine4"
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0"
+        android:background="@color/black"
+        android:text="TextView" />
+
+    <EditText
+        android:id="@+id/txtPassword"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:text="Password"
+        android:textColor="@color/white"
+        android:textFontWeight="@android:integer/config_longAnimTime"
+        android:textSize="30sp"
+        android:textStyle="normal"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:background="@android:color/transparent"
+        />
+    <ImageView
+        android:id="@+id/imgLock"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="-45dp"
+        android:layout_marginRight="60dp"
+        app:srcCompat="@drawable/ic_lock" />
+
+    <TextView
+        android:id="@+id/txtunderLine5"
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0"
+        android:background="@color/black"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bglogin"
+        android:text="Register"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:backgroundTintMode="multiply" />
+
+</LinearLayout>
