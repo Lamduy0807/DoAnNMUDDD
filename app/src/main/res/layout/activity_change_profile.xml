@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="controller.minh.ChangeProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+  <ImageView
+      android:layout_width="40dp"
+      android:layout_height="40dp"
+      android:src="@drawable/ic_close_24px"
+      android:layout_marginRight="10dp"
+      android:layout_marginTop="10dp"
+      android:layout_gravity="right"/>
+        <LinearLayout
+            android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+          <LinearLayout
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_weight="1.5"
+              android:layout_marginLeft="50dp">
+            <controller.minh.CircleImageView
+                android:id="@+id/img"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="2"
+                android:src="@drawable/avrt"
+                tools:layout_editor_absoluteX="76dp"
+                tools:layout_editor_absoluteY="92dp" />
+              <ImageView
+                  android:layout_width="0dp"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="0.5"
+                  android:src="@drawable/ic_border_color_24px"
+                  android:layout_gravity="end|bottom"/>
+          </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:orientation="vertical">
+
+               <EditText
+                   android:id="@+id/eTxtUser"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="SuperDog"
+                   android:textStyle="bold"
+                   android:textColorHint="@color/dgreen"
+                   android:layout_marginTop="30dp"
+                   android:layout_marginLeft="20dp"
+                   android:background="@null"/>
+                <TextView
+                    android:id="@+id/txtID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:text="ID: 190000232"
+                    android:textColor="@color/dgreen" />
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/line"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="25dp"
+            android:src="@drawable/line" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:textStyle="bold"
+            android:text="Phone"
+            android:textColor="@color/dgreen" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:background="@null"
+            android:textSize="25sp"/>
+        <ImageView
+            android:id="@+id/line2"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:src="@drawable/line" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:textStyle="bold"
+            android:text="Password"
+            android:textColor="@color/dgreen" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:layout_marginLeft="25dp"
+                android:inputType="textPassword"
+                android:text="newpassword"
+                android:textSize="25sp"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:layout_marginRight="25dp"
+                android:src="@drawable/ic_border_color_24px" />
+
+
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/line3"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:src="@drawable/line" />
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/button_botron"
+            app:backgroundTint="@null"
+            android:text="Save"
+            android:textAllCaps="false"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

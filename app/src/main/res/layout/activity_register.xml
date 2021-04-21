@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/login"
-    tools:context=".RegisterActivity">
+    tools:context="controller.mytravel.RegisterActivity">
 
     <EditText
         android:id="@+id/txtEmail"

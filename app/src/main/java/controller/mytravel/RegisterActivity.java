@@ -1,8 +1,10 @@
-package nga.uit.edu.mytravel;
+package controller.mytravel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import nga.uit.edu.mytravel.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
