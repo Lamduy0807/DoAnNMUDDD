@@ -9,10 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyTravel">
-        <activity android:name=".RegisterActivity"></activity>
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".Load2Activity" />
-        <activity android:name=".MainActivity">
+        <activity android:name="controller.minh.ChangePasswordActivity"></activity>
+        <activity android:name="controller.minh.ChangeProfileActivity" />
+        <activity android:name="controller.minh.ProfileActivity" />
+        <activity android:name="controller.mytravel.RegisterActivity" />
+        <activity android:name="controller.mytravel.LoginActivity" />
+        <activity android:name="controller.mytravel.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

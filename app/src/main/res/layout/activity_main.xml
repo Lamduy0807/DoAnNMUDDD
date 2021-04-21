@@ -7,7 +7,7 @@
     android:background="@drawable/bgload1"
     android:onClick="xuLyChamManHinh"
 
-    tools:context=".MainActivity">
+    tools:context="controller.mytravel.MainActivity">
 
 
 
