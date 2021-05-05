@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void xuLyChamManHinh(View view) {
-        Intent intent=new Intent(MainActivity.this, ProfileActivity.class);
+        Intent intent=new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);
     }
 }
