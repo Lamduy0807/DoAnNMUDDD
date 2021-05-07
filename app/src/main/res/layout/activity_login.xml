@@ -19,13 +19,11 @@
         android:layout_marginRight="60dp"
         android:ems="10"
         android:inputType="textPersonName"
-<<<<<<< HEAD
-        android:hint="Username"
-        android:textColorHint="@color/white"
-=======
+
         android:hint="@string/user_name"
         android:textColor="@color/white"
->>>>>>> main
+        android:textColorHint="@color/white"
+
         android:textFontWeight="@android:integer/config_longAnimTime"
         android:textSize="30sp"
         android:background="@android:color/transparent"
@@ -61,13 +59,11 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="60dp"
         android:layout_marginRight="60dp"
-<<<<<<< HEAD
-        android:hint="Password"
-        android:textColorHint="@color/white"
-=======
+
+
         android:hint="@string/pass_word"
         android:textColor="@color/white"
->>>>>>> main
+
         android:textFontWeight="@android:integer/config_longAnimTime"
         android:textSize="30sp"
         android:textStyle="normal"
