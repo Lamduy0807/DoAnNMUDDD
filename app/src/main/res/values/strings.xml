@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">MyTravel</string>
+    <string name="user_name">User Name</string>
+    <string name="pass_word">PassWord</string>
+    <string name="phone_num">Phone Number</string>
+    <string name="name">Name</string>
+    <string name="re_pass_word">Retype Password</string>
+    <string name="email">Email</string>
+
+    <string name="login">Login?</string>
+    <string name="register">Create an account?</string>
 </resources>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "515351036265",
+    "firebase_url": "https://doannmuddd-2c6f2-default-rtdb.firebaseio.com",
+    "project_id": "doannmuddd-2c6f2",
+    "storage_bucket": "doannmuddd-2c6f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515351036265:android:937f39602e75d7060f3df8",
+        "android_client_info": {
+          "package_name": "nga.uit.edu.mytravel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "515351036265-0fmibal0fo8i99vtc6j9htefen5ij78c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpzufjuVKo8Q_gn1Gy8gDVx-_ElfmhC3c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "515351036265-0fmibal0fo8i99vtc6j9htefen5ij78c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
