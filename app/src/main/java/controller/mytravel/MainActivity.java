@@ -2,7 +2,7 @@ package controller.mytravel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import controller.minh.ProfileActivity;
+import controller.CreateTrip.CreateTrip1;
 import nga.uit.edu.mytravel.R;
 
 import android.content.Intent;
@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void xuLyChamManHinh(View view) {
-        Intent intent=new Intent(MainActivity.this, ProfileActivity.class);
+        Intent intent=new Intent(MainActivity.this, RegisterActivity.class);
         startActivity(intent);
     }
 }

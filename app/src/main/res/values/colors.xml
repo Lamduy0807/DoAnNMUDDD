@@ -9,4 +9,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="dgreen">#0D602E</color>
     <color name="gray">#111111</color>
+
+    <color name="colorPrimary">#41D3BD</color>
+    <color name="colorAccent">#FDA14F</color>
+    <color name="colorTextIcons">#FFFFFF</color>
+    <color name="colorTextPrimary">#212121</color>
+    <color name="colorTextSecondary">#757575</color>
+    <color name="colorBackground">#EEEEEE</color>
 </resources>
