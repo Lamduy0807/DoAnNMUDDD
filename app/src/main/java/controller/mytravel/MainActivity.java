@@ -3,6 +3,7 @@ package controller.mytravel;
 import androidx.appcompat.app.AppCompatActivity;
 
 import controller.CreateTrip.CreateTrip1;
+import controller.CreateTrip.Trip6Activity;
 import nga.uit.edu.mytravel.R;
 
 import android.content.Intent;
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void xuLyChamManHinh(View view) {
-        Intent intent=new Intent(MainActivity.this, RegisterActivity.class);
+        Intent intent=new Intent(MainActivity.this, Trip6Activity.class);
         startActivity(intent);
     }
 }

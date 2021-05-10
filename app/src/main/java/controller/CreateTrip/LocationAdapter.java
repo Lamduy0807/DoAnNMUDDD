@@ -1,4 +1,4 @@
-package controller.CreateTrip;
+    package controller.CreateTrip;
 
 import android.view.LayoutInflater;
 import android.view.View;
