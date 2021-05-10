@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground1">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorBackground1">
+            <ImageView
+                android:id="@+id/imgHeader"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_180sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/plane"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <TextView
+                android:id="@+id/tvVietNam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_40sdp"
+                android:shadowColor="@color/colorPrimary1"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="10"
+                android:text="VIET NAM"
+                android:textSize="@dimen/_24sdp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/imgHeader"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                android:id="@+id/tvwelcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="10"
+                android:text="Welcome to"
+                android:textSize="@dimen/_24sdp"
+                android:shadowColor="@color/colorTextPrimary1"
+                app:layout_constraintBottom_toTopOf="@+id/tvVietNam"
+                app:layout_constraintStart_toStartOf="@+id/tvVietNam"/>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/CardSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardElevation="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="@id/imgHeader"
+                app:layout_constraintTop_toBottomOf="@id/imgHeader">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:src="@drawable/ic_location"
+                        app:tint="@color/colorTextHint1" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        android:background="@null"
+                        android:hint="Enter your destination"
+                        android:imeOptions="actionDone"
+                        android:importantForAutofill="no"
+                        android:inputType="text"
+                        android:textColor="@color/colorTextPrimary1"
+                        android:textSize="@dimen/_13sdp"/>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/VP2Img"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:layout_constraintTop_toBottomOf="@+id/CardSearch"/>
+
+            <TextView
+                android:id="@+id/tvRecent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:text="Most Recent"
+                android:textColor="@color/colorTextPrimary1"
+                android:textSize="@dimen/_20sdp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/VP2Img"/>
+
+            <RelativeLayout
+                android:id="@+id/Rlcontent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvRecent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:background="@color/teal_700"
+                android:elevation="@dimen/_8sdp">
+                <LinearLayout
+                    android:layout_width="130dp"
+                    android:id="@+id/LLfeature"
+                    android:layout_height="280dp"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical"
+                    android:background="@color/teal_200"
+                    android:elevation="@dimen/_8sdp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="25sp"
+                        android:layout_marginTop="80dp"
+                        android:textColor="@color/colorTextPrimary1"
+                        android:textAllCaps="true"
+                        android:text="Ready to Discover"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="10dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="19sp"
+                        android:layout_margin="10dp"
+                        android:text="Many Places in VietNam"
+                        android:textColor="@color/colorTextPrimary1"/>
+
+
+                </LinearLayout>
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="280dp"
+                    android:layout_toRightOf="@+id/LLfeature"
+                    android:clipToPadding="false"
+                    android:overScrollMode="never"
+                    android:paddingLeft="3dp"
+                    android:paddingRight="3dp"
+                    android:layout_margin="10dp">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="15dp"
+                            android:elevation="@dimen/_8sdp">
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:layout_width="150dp"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/cncr"
+                                app:riv_corner_radius="@dimen/_8sdp"/>
+                            <TextView
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:padding="@dimen/_8sdp"
+                                android:shadowColor="@color/colorTextPrimary1"
+                                android:shadowDy="0"
+                                android:shadowDx="0"
+                                android:shadowRadius="10"
+                                android:textColor="@color/white"
+                                android:text="Chợ nổi Cái Răng - Cần Thơ"
+                                android:textSize="@dimen/_13sdp"
+                                android:textStyle="bold"/>
+
+
+                        </FrameLayout>
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="15dp"
+                            android:elevation="@dimen/_8sdp">
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:layout_width="150dp"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/lm81"
+                                app:riv_corner_radius="@dimen/_8sdp"/>
+                            <TextView
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:padding="@dimen/_8sdp"
+                                android:shadowColor="@color/colorTextPrimary1"
+                                android:shadowDy="0"
+                                android:shadowDx="0"
+                                android:shadowRadius="10"
+                                android:textColor="@color/white"
+                                android:text="Land Mark 81 - TP Hồ Chí Minh"
+                                android:textSize="@dimen/_13sdp"
+                                android:textStyle="bold"/>
+
+
+                        </FrameLayout>
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:elevation="@dimen/_8sdp">
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:layout_width="150dp"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/nhd"
+                                app:riv_corner_radius="@dimen/_8sdp"/>
+                            <TextView
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:padding="@dimen/_8sdp"
+                                android:shadowColor="@color/colorTextPrimary1"
+                                android:shadowDy="0"
+                                android:shadowDx="0"
+                                android:shadowRadius="10"
+                                android:textColor="@color/white"
+                                android:text="Ngọn Hải Đăng - Vũng Tàu"
+                                android:textSize="@dimen/_13sdp"
+                                android:textStyle="bold"/>
+
+
+                        </FrameLayout>
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tvPopular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginLeft="@dimen/_15sdp"
+                app:layout_constraintTop_toBottomOf="@+id/Rlcontent"
+                android:text="Popular"
+                android:textStyle="bold"
+                android:textSize="@dimen/_20sdp"
+                android:textColor="@color/colorTextPrimary1"/>
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/VP"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_marginTop="20dp"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvPopular"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+
+</LinearLayout>
