@@ -33,8 +33,6 @@ public class Trip6Activity extends AppCompatActivity  {
     private void addControls() {
         strPlace=getResources().getStringArray(R.array.list_place);
         strAddress=getResources().getStringArray(R.array.address_place);
-
-
         recyclerView= this.<RecyclerView>findViewById(R.id.recyclerView);
         PlaceAdapter placeAdapter=new PlaceAdapter(this,strPlace, strAddress,images);
         recyclerView.setAdapter(placeAdapter);

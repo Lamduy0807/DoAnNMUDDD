@@ -1,5 +1,6 @@
 package controller.CreateTrip;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -66,6 +67,8 @@ public class CreateTrip2 extends AppCompatActivity implements LocationListener {
                     }
                 }
                 Toast.makeText(CreateTrip2.this, locationNames.toString(),Toast.LENGTH_SHORT).show();
+                Intent intent= new Intent(CreateTrip2.this, Trip6Activity.class);
+                startActivity(intent);
             }
         });
     }
