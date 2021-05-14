@@ -7,28 +7,74 @@ import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MenuItem;
 import android.view.View;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import controller.CreateTrip.CreateTrip1;
+import controller.minh.ChangeProfileActivity;
 import nga.uit.edu.mytravel.R;
 
 public class HomeScreen extends AppCompatActivity {
     private ViewPager2 viewPager2;
     private ViewPager2 viewPager3;
     private Handler slideHandler = new Handler();
+    private BottomNavigationView bottomNavigationView ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
         viewPager2 = findViewById(R.id.VP);
         viewPager3 = findViewById(R.id.VP2Img);
+        bottomNavigationView = findViewById(R.id.bottom_navi);
+        SetBottomNavigationBar();
         SetViewPaperTravelocation();
         SetImgSlide();
+
+
     }
+
+    private void SetBottomNavigationBar() {
+        bottomNavigationView.setSelectedItemId(R.id.action_home);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId())
+                {
+                    case R.id.action_home:
+                    {
+                        return true;
+                    }
+                    case R.id.action_trip:
+                    {
+                        startActivity(new Intent(getApplicationContext(), CreateTrip1.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    }
+                    case R.id.action_noti:
+                    {
+
+                    }
+                    case R.id.action_pro:
+                    {
+                        startActivity(new Intent(getApplicationContext(), ChangeProfileActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+    }
+
     private void SetImgSlide() {
         List<ImgSlide> imgSlideList = new ArrayList<>();
         imgSlideList.add(new ImgSlide(R.drawable.hcm));

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_home"
+        android:title="@string/action_home"
+        android:icon="@drawable/icon_home"/>
+    <item android:id="@+id/action_trip"
+        android:title="@string/action_trip"
+        android:icon="@drawable/icon_trip"/>
+    <item android:id="@+id/action_noti"
+        android:title="@string/action_noti"
+        android:icon="@drawable/icon_noti"/>
+    <item android:id="@+id/action_pro"
+        android:title="@string/action_pro"
+        android:icon="@drawable/icon_pro"/>
+</menu>

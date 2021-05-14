@@ -11,6 +11,11 @@
     <string name="register">Create an account?</string>
     <string name="title_activity_maps">Map</string>
 
+    <string name="action_home">Home</string>
+    <string name="action_sche">Schedule</string>
+    <string name="action_trip">Trip</string>
+    <string name="action_noti">Notification</string>
+    <string name="action_pro">Profile</string>
 
     <string-array name="list_place">
         <item>Văn Thánh Miếu Vĩnh Long</item>

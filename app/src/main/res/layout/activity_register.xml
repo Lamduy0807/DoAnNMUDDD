@@ -1,241 +1,249 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="controller.mytravel.RegisterActivity">
+    tools:context="controller.mytravel.RegisterActivity"
+    android:background="@drawable/login">
 
-    <EditText
-        android:id="@+id/txtName"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
-        android:hint="@string/name"
-        android:textColor="@color/white"
-        android:textFontWeight="@android:integer/config_longAnimTime"
-        android:textSize="30sp"
-        android:textStyle="normal"
-        android:ems="10"
-        android:background="@android:color/transparent"
-        />
-    <ImageView
-        android:id="@+id/imgLock0"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="-45dp"
-        android:layout_marginRight="60dp"
-        app:srcCompat="@drawable/ic_lock" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/txtName"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
+            android:hint="@string/name"
+            android:textColor="@color/white"
+            android:textFontWeight="@android:integer/config_longAnimTime"
+            android:textSize="30sp"
+            android:textStyle="normal"
+            android:ems="10"
+            android:background="@android:color/transparent"
+            />
+        <ImageView
+            android:id="@+id/imgLock0"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="-45dp"
+            android:layout_marginRight="60dp"
+            app:srcCompat="@drawable/ic_lock" />
 
-    <TextView
-        android:id="@+id/txtunderLine0"
-        android:layout_width="300dp"
-        android:layout_height="1dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_weight="0"
-        android:background="@color/black"
-        android:text="TextView" />
+        <TextView
+            android:id="@+id/txtunderLine0"
+            android:layout_width="300dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0"
+            android:background="@color/black"
+            android:text="TextView" />
 
-    <EditText
-        android:id="@+id/txtPhone"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
-        android:hint="@string/phone_num"
-        android:textColor="@color/white"
-        android:textFontWeight="@android:integer/config_longAnimTime"
-        android:textSize="30sp"
-        android:textStyle="normal"
-        android:ems="10"
-        android:background="@android:color/transparent"
-        />
-    <ImageView
-        android:id="@+id/imgLock00"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="-45dp"
-        android:layout_marginRight="60dp"
-        app:srcCompat="@drawable/ic_lock" />
+        <EditText
+            android:id="@+id/txtPhone"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
+            android:hint="@string/phone_num"
+            android:textColor="@color/white"
+            android:textFontWeight="@android:integer/config_longAnimTime"
+            android:textSize="30sp"
+            android:textStyle="normal"
+            android:ems="10"
+            android:background="@android:color/transparent"
+            />
+        <ImageView
+            android:id="@+id/imgLock00"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="-45dp"
+            android:layout_marginRight="60dp"
+            app:srcCompat="@drawable/ic_lock" />
 
-    <TextView
-        android:id="@+id/txtunderLine500"
-        android:layout_width="300dp"
-        android:layout_height="1dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_weight="0"
-        android:background="@color/black"
-        android:text="TextView" />
+        <TextView
+            android:id="@+id/txtunderLine500"
+            android:layout_width="300dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0"
+            android:background="@color/black"
+            android:text="TextView" />
 
 
-    <EditText
-        android:id="@+id/txtEmail"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:textColor="@color/white"
-        android:background="@android:color/transparent"
-        android:textSize="30sp"
-        android:hint="@string/email"
-        android:textStyle="normal"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="20dp"/>
+        <EditText
+            android:id="@+id/txtEmail"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:textColor="@color/white"
+            android:background="@android:color/transparent"
+            android:textSize="30sp"
+            android:hint="@string/email"
+            android:textStyle="normal"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="20dp"/>
 
-    <ImageView
-        android:id="@+id/imgEmail"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="-45dp"
-        android:layout_marginRight="60dp"
-        app:srcCompat="@drawable/ic_mail_outline_24px" />
-    <TextView
-        android:id="@+id/txtUnderLine3"
-        android:layout_width="300dp"
-        android:layout_height="1dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_weight="0"
-        android:background="@color/black"
-        android:text="TextView" />
+        <ImageView
+            android:id="@+id/imgEmail"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="-45dp"
+            android:layout_marginRight="60dp"
+            app:srcCompat="@drawable/ic_mail_outline_24px" />
+        <TextView
+            android:id="@+id/txtUnderLine3"
+            android:layout_width="300dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0"
+            android:background="@color/black"
+            android:text="TextView" />
 
-    <EditText
-        android:id="@+id/txtUsername"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="@string/user_name"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        android:background="@android:color/transparent"
-        android:textStyle="normal" />
+        <EditText
+            android:id="@+id/txtUsername"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="@string/user_name"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:background="@android:color/transparent"
+            android:textStyle="normal" />
 
-    <ImageView
-        android:id="@+id/imgUsername"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="-45dp"
-        android:layout_marginRight="60dp"
-        app:srcCompat="@drawable/ic_person" />
+        <ImageView
+            android:id="@+id/imgUsername"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="-45dp"
+            android:layout_marginRight="60dp"
+            app:srcCompat="@drawable/ic_person" />
 
-    <TextView
-        android:id="@+id/txtUnderLine4"
-        android:layout_width="300dp"
-        android:layout_height="1dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_weight="0"
-        android:background="@color/black"
-        android:text="TextView" />
+        <TextView
+            android:id="@+id/txtUnderLine4"
+            android:layout_width="300dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0"
+            android:background="@color/black"
+            android:text="TextView" />
 
-    <EditText
-        android:id="@+id/txtPassword"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
-        android:hint="@string/pass_word"
-        android:textColor="@color/white"
-        android:textFontWeight="@android:integer/config_longAnimTime"
-        android:textSize="30sp"
-        android:textStyle="normal"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:background="@android:color/transparent"
-        />
-    <ImageView
-        android:id="@+id/imgLock"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="-45dp"
-        android:layout_marginRight="60dp"
-        app:srcCompat="@drawable/ic_lock" />
+        <EditText
+            android:id="@+id/txtPassword"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
+            android:hint="@string/pass_word"
+            android:textColor="@color/white"
+            android:textFontWeight="@android:integer/config_longAnimTime"
+            android:textSize="30sp"
+            android:textStyle="normal"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:background="@android:color/transparent"
+            />
+        <ImageView
+            android:id="@+id/imgLock"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="-45dp"
+            android:layout_marginRight="60dp"
+            app:srcCompat="@drawable/ic_lock" />
 
-    <TextView
-        android:id="@+id/txtunderLine5"
-        android:layout_width="300dp"
-        android:layout_height="1dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_weight="0"
-        android:background="@color/black"
-        android:text="TextView" />
+        <TextView
+            android:id="@+id/txtunderLine5"
+            android:layout_width="300dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0"
+            android:background="@color/black"
+            android:text="TextView" />
 
-    <EditText
-        android:id="@+id/txtRePassword"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
-        android:hint="@string/re_pass_word"
-        android:textColor="@color/white"
-        android:textFontWeight="@android:integer/config_longAnimTime"
-        android:textSize="30sp"
-        android:textStyle="normal"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:background="@android:color/transparent"
-        />
-    <ImageView
-        android:id="@+id/imgLock2"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="-45dp"
-        android:layout_marginRight="60dp"
-        app:srcCompat="@drawable/ic_lock" />
+        <EditText
+            android:id="@+id/txtRePassword"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:hint="@string/re_pass_word"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textFontWeight="@android:integer/config_longAnimTime"
+            android:textSize="30sp"
+            android:textStyle="normal" />
 
-    <TextView
-        android:id="@+id/txtunderLine6"
-        android:layout_width="300dp"
-        android:layout_height="1dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_weight="0"
-        android:background="@color/black"
-        android:text="TextView" />
+        <ImageView
+            android:id="@+id/imgLock2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="-45dp"
+            android:layout_marginRight="60dp"
+            app:srcCompat="@drawable/ic_lock" />
 
-    <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="280dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="60dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/bglogin"
-        android:text="Register"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp"
-        app:backgroundTintMode="multiply" />
+        <TextView
+            android:id="@+id/txtunderLine6"
+            android:layout_width="300dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0"
+            android:background="@color/black"
+            android:text="TextView" />
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="280dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="60dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/bglogin"
+            android:text="Register"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:backgroundTintMode="multiply" />
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/btnlogin"
         android:layout_width="wrap_content"
@@ -244,11 +252,12 @@
         android:layout_marginTop="10dp"
         android:text="@string/login"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="22sp"
         android:textAllCaps="false"
         android:background="@android:color/transparent"
         app:backgroundTintMode="multiply"
-        />
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"/>
 
-</LinearLayout>
+</RelativeLayout>
