@@ -107,7 +107,7 @@ public class LoginActivity extends AppCompatActivity {
                     String passWfromdatabase = snapshot.child(enterusername).child("passWord").getValue(String.class);
                     if(passWfromdatabase.equals(enterpass))
                     {
-                        Intent intent = new Intent(getApplicationContext(), ChangeProfileActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), HomeScreen.class);
                         startActivity(intent);
                     }
                     else
