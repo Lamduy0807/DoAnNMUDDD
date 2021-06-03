@@ -168,14 +168,16 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/btnLogout"
             android:layout_width="200dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
             android:background="@drawable/button_botron"
-            app:backgroundTint="@null"
             android:text="Logout"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            app:backgroundTint="@null"
+            android:onClick="logout"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

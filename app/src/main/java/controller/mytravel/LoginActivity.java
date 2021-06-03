@@ -18,6 +18,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import controller.minh.ChangeProfileActivity;
+import controller.minh.ProfileActivity;
 import nga.uit.edu.mytravel.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -107,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
                     String passWfromdatabase = snapshot.child(enterusername).child("passWord").getValue(String.class);
                     if(passWfromdatabase.equals(enterpass))
                     {
-                        Intent intent = new Intent(getApplicationContext(), ChangeProfileActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                         startActivity(intent);
                     }
                     else
