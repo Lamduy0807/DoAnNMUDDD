@@ -41,7 +41,6 @@ public class DetailPlaceActivity extends AppCompatActivity {
         if(getIntent().hasExtra("images") && getIntent().hasExtra("data1") &&
         getIntent().hasExtra("data2"))
         {
-
             data1=getIntent().getStringExtra("data1");
             data2=getIntent().getStringExtra("data2");
             images=getIntent().getIntExtra("images",1);

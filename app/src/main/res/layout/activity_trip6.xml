@@ -1,58 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="controller.CreateTrip.Trip6Activity">
 
     <fragment
         android:id="@+id/map"
-        android:name="com.google.android.gms.maps.MapFragment"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        />
+        android:layout_height="350dp"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:orientation="horizontal"
-        android:layout_height="50dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toBottomOf="@+id/map">
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="50dp"
             android:text="List of places"
             android:textColor="@color/black"
-            android:textStyle="bold"
             android:textSize="18sp"
-            android:layout_marginTop="15sp"
-            android:layout_marginLeft="15dp"
-            />
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="37dp"
+            tools:layout_editor_absoluteY="459dp" />
+
         <EditText
-            android:layout_width="230dp"
-            android:layout_height="45dp"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
             android:textSize="18sp"
             android:textStyle="normal"
-            android:layout_marginTop="15sp"
-            />
+            tools:layout_editor_absoluteX="125dp"
+            tools:layout_editor_absoluteY="603dp" />
+
+
         <ImageButton
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/icon_search"
-            android:layout_marginTop="15sp"
-            />
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_search"
+            tools:layout_editor_absoluteX="266dp"
+            tools:layout_editor_absoluteY="409dp" />
+
     </LinearLayout>
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:clipToPadding="false"
         android:orientation="vertical"
         android:padding="5dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
 
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0" />
 
-</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

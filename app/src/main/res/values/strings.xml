@@ -23,10 +23,14 @@
         <item>Chợ Nổi Trà Ôn</item>
         <item>Cầu Mỹ Thuận</item>
     </string-array>
+
     <string-array name="address_place">
         <item>Tran Phu, Phuong 4, Vinh Long</item>
         <item>Phuong 5, Vinh Long</item>
         <item>Update later</item>
         <item>Update later</item>
     </string-array>
+
+
+
 </resources>
