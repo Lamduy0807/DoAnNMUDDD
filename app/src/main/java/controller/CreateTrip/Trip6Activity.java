@@ -34,7 +34,6 @@ public class Trip6Activity extends AppCompatActivity implements OnMapReadyCallba
         .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-
         addControls();
 
     }
