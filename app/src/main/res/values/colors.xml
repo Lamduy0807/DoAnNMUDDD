@@ -26,5 +26,9 @@
     <color name="colorSelectedMenu1">#408DED</color>
     <color name="colorBackground1">#F2F5Fe</color>
 
+    <color name="grey">#393838</color>
+    <color name="LightGreen">#0D602E</color>
+    <color name="Main">#DD611FA2</color>
+    <color name="grey1">#BAB2B2</color>
 
 </resources>

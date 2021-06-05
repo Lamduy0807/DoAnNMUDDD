@@ -7,10 +7,11 @@
          location permissions for the "MyLocation" functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -18,13 +19,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyTravel">
 
-        <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="@string/map_key"/>
+        <activity android:name="controller.mytravel.LoginScreen"></activity>
 
-        <activity android:name="controller.CreateTrip.DetailPlaceActivity"></activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/map_key" />
+
+        <activity android:name="controller.CreateTrip.DetailPlaceActivity" />
         <activity android:name="controller.CreateTrip.Trip6Activity" />
-        <activity android:name="controller.mytravel.HomeScreen"></activity>
-
+        <activity android:name="controller.mytravel.HomeScreen" />
         <activity android:name="controller.minh.ChangeProfileActivity" />
         <activity android:name="controller.minh.ProfileActivity" />
         <activity android:name="controller.mytravel.RegisterActivity" />
