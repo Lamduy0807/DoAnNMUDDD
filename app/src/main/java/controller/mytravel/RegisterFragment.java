@@ -51,9 +51,9 @@ public class RegisterFragment extends Fragment {
         if(!validatePhone()||!validateEmail()||!validatePass()||!validateRePass())
             return;
         else {
-            String email = etMail.getText().toString();
-            String PW = etPW.getText().toString();
-            String phone = etPhone.getText().toString();
+            String email = etMail.getText().toString().trim();
+            String PW = etPW.getText().toString().trim();
+            String phone = etPhone.getText().toString().trim();
             mAuth.createUserWithEmailAndPassword(email, PW).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
