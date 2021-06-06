@@ -49,7 +49,7 @@ public class ProfileActivity extends AppCompatActivity {
   private StorageReference storageReference;
   private TextView txtEmail,txtID;
   private Button btnLogout;
-  private ImageView ivUpdatePass;
+  private ImageView ivUpdatePass,ivSave;
 
 
 
@@ -64,6 +64,7 @@ public class ProfileActivity extends AppCompatActivity {
       btnLogout=findViewById(R.id.btnLogout);
        profilePic=findViewById(R.id.img);
        changePic=findViewById(R.id.btnChangePic);
+       ivSave=findViewById(R.id.ivSave);
        txtEmail=findViewById(R.id.txtmail);
        txtEmail.setText(mAuth.getCurrentUser().getEmail());
        txtID=findViewById(R.id.txtID);
@@ -88,9 +89,16 @@ public class ProfileActivity extends AppCompatActivity {
            public void onClick(View v) {
                Intent openGallerryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
                startActivityForResult(openGallerryIntent,1000);
-              uploadProfileImage();
+
            }
        });
+       ivSave.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               uploadProfileImage();
+           }
+       });
+
        getUserInfo();
 
 
@@ -167,9 +175,7 @@ public class ProfileActivity extends AppCompatActivity {
                 imageUri = data.getData();
                 profilePic.setImageURI(imageUri);
             }
-            else{
-                Toast.makeText(this, "Error, Try again", Toast.LENGTH_SHORT).show();
-            }
+
         }
 
     }
