@@ -27,6 +27,7 @@
 
         <activity android:name="controller.CreateTrip.DetailPlaceActivity" />
         <activity android:name="controller.CreateTrip.Trip6Activity" />
+<<<<<<< HEAD
         <activity android:name="controller.mytravel.HomeScreen" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -34,6 +35,9 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
+=======
+        <activity android:name="controller.mytravel.HomeScreen" />
+>>>>>>> main
         <activity android:name="controller.minh.ChangeProfileActivity" />
         <activity android:name="controller.minh.ProfileActivity" />
         <activity android:name="controller.mytravel.RegisterActivity" />

@@ -87,7 +87,11 @@
         android:textColorLink="#388E3C"
         android:textSize="16dp"
         android:textStyle="bold"
+<<<<<<< HEAD
         app:backgroundTint="#a6e4e7"
+=======
+        app:backgroundTint="#DD611FA2"
+>>>>>>> main
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

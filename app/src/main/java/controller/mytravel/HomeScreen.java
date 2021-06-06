@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
+<<<<<<< HEAD
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -21,6 +22,10 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+=======
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+>>>>>>> main
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,11 +39,14 @@ public class HomeScreen extends AppCompatActivity {
     private ViewPager2 viewPager3;
     private Handler slideHandler = new Handler();
     private BottomNavigationView bottomNavigationView ;
+<<<<<<< HEAD
     private SearchView searchView;
     private ListView LocationList;
     private ArrayList<String> List;
     private ArrayAdapter<String> adapter;
     FirebaseAuth firebaseAuth;
+=======
+>>>>>>> main
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,15 +55,22 @@ public class HomeScreen extends AppCompatActivity {
         viewPager2 = findViewById(R.id.VP);
         viewPager3 = findViewById(R.id.VP2Img);
         bottomNavigationView = findViewById(R.id.bottom_navi);
+<<<<<<< HEAD
         firebaseAuth = FirebaseAuth.getInstance();
         SetBottomNavigationBar();
         SetViewPaperTravelocation();
         SetImgSlide();
         SetupSearchView();
+=======
+        SetBottomNavigationBar();
+        SetViewPaperTravelocation();
+        SetImgSlide();
+>>>>>>> main
 
 
     }
 
+<<<<<<< HEAD
     private void SetupSearchView() {
         searchView = findViewById(R.id.searchview);
         LocationList = findViewById(R.id.locationList);
@@ -104,6 +119,8 @@ public class HomeScreen extends AppCompatActivity {
 
     }
 
+=======
+>>>>>>> main
     private void SetBottomNavigationBar() {
         bottomNavigationView.setSelectedItemId(R.id.action_home);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -205,6 +222,7 @@ public class HomeScreen extends AppCompatActivity {
         });
         viewPager2.setPageTransformer(compositePageTransformer);
     }
+<<<<<<< HEAD
 
     private void checkUserStatus() {
         FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -222,4 +240,6 @@ public class HomeScreen extends AppCompatActivity {
         checkUserStatus();
         super.onStart();
     }
+=======
+>>>>>>> main
 }
