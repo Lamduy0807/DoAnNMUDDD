@@ -117,7 +117,7 @@ public class LoginFragment extends Fragment {
 
                 if(task.isSuccessful()) {
                     Log.d("test","success");
-                    Toast.makeText(getActivity(),"logininggg",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(),"Logining...",Toast.LENGTH_LONG).show();
                     startActivity(new Intent(getContext(), HomeScreen.class));
                 }
             }

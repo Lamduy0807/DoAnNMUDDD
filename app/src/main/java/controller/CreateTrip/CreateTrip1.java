@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import controller.minh.ChangeProfileActivity;
+import controller.minh.ProfileActivity;
 import controller.mytravel.HomeScreen;
 import nga.uit.edu.mytravel.R;
 
@@ -72,7 +72,7 @@ public class CreateTrip1 extends AppCompatActivity {
                     }
                     case R.id.action_pro:
                     {
-                        startActivity(new Intent(getApplicationContext(), ChangeProfileActivity.class));
+                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     }
