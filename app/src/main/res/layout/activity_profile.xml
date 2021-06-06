@@ -23,15 +23,31 @@
             android:layout_height="200dp"
             android:layout_marginTop="50dp"
             android:src="@drawable/avrt" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/btnChangePic"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="end"
+            <ImageView
+                android:id="@+id/ivSave"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="bottom"
+                android:src="@drawable/ic_baseline_save_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            android:src="@drawable/ic_border_color_24px" />
+            <ImageView
+                android:id="@+id/btnChangePic"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
 
+                android:src="@drawable/ic_border_color_24px"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
     <LinearLayout
