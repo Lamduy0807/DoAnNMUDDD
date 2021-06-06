@@ -109,23 +109,69 @@ public class LoginFragment extends Fragment {
     }
 
     private void login() {
-        String email = etMail.getText().toString();
-        String PW = etPW.getText().toString();
-        mAuth.signInWithEmailAndPassword(email,PW).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
+        if(!validateEmail()||!validatePass())
+            return;
+        else {
+            String email = etMail.getText().toString().trim();
+            String PW = etPW.getText().toString().trim();
 
-                if(task.isSuccessful()) {
-                    Log.d("test","success");
-                    Toast.makeText(getActivity(),"Logining...",Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(getContext(), HomeScreen.class));
+            mAuth.signInWithEmailAndPassword(email, PW).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+
+                    if (task.isSuccessful()) {
+                        Log.d("test", "success");
+                        Toast.makeText(getActivity(), "Logining...", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(getContext(), HomeScreen.class));
+                    }
+                    else
+                    {
+                        Toast.makeText(getContext(),"Sign up fail!",Toast.LENGTH_LONG).show();
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
+    private Boolean validatePass()
+    {
 
+        String Pass = etPW.getText().toString();
+        if(Pass.isEmpty())
+        {
+            etPW.setError("Field can not be empty!");
+            return false;
+        }
+        else if(Pass.length()<=6){
+            etPW.setError("Password must be longer than 6 characters!");
+            return false;
+        }
+        else
+        {
+            return true;
+        }
 
+    }
+    private Boolean validateEmail()
+    {
+        String email = etMail.getText().toString();
+        String emailpatterns = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+        if(email.isEmpty())
+        {
+            etMail.setError("Field can not be empty!");
+            return false;
+        }
+        else if(!email.matches(emailpatterns))
+        {
+            etMail.setError("Ivalid email!");
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
     public void SetAnimation()
     {
         etMail.setTranslationX(800);
