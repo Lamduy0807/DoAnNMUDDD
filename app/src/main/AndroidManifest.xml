@@ -27,7 +27,15 @@
 
         <activity android:name="controller.CreateTrip.DetailPlaceActivity" />
         <activity android:name="controller.CreateTrip.Trip6Activity" />
-        <activity android:name="controller.mytravel.HomeScreen" />
+
+        <activity android:name="controller.mytravel.HomeScreen" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+
         <activity android:name="controller.minh.ChangeProfileActivity" />
         <activity android:name="controller.minh.ProfileActivity" />
         <activity android:name="controller.mytravel.RegisterActivity" />
@@ -35,11 +43,7 @@
         <activity android:name="controller.CreateTrip.CreateTrip1" />
         <activity android:name="controller.CreateTrip.CreateTrip2" />
         <activity android:name="controller.mytravel.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

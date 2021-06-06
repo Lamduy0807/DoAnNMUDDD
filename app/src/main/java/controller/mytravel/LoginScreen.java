@@ -3,9 +3,14 @@ package controller.mytravel;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 
 import nga.uit.edu.mytravel.R;
 
@@ -29,4 +34,5 @@ public class LoginScreen extends AppCompatActivity {
         adapter.AddFragment(new RegisterFragment(),"Register");
         viewPager.setAdapter(adapter);
     }
+
 }

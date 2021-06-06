@@ -2,6 +2,7 @@ package controller.mytravel;
 
 import android.app.Dialog;
 import android.content.Intent;
+
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+
 import nga.uit.edu.mytravel.R;
 
 public class LoginFragment extends Fragment {
@@ -34,6 +36,7 @@ public class LoginFragment extends Fragment {
     float v = 0;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     ExtendedFloatingActionButton btn;
+
 
     @Override
     public View onCreateView( LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
@@ -134,4 +137,5 @@ public class LoginFragment extends Fragment {
         etMail.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
         etPW.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
     }
+
 }

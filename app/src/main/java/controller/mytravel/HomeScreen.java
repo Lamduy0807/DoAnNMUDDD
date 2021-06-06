@@ -13,7 +13,16 @@ import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.SearchView;
+import android.widget.Toast;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +36,14 @@ public class HomeScreen extends AppCompatActivity {
     private ViewPager2 viewPager3;
     private Handler slideHandler = new Handler();
     private BottomNavigationView bottomNavigationView ;
+<<<<<<< HEAD
+    private SearchView searchView;
+    private ListView LocationList;
+    private ArrayList<String> List;
+    private ArrayAdapter<String> adapter;
+    FirebaseAuth firebaseAuth;
+=======
+>>>>>>> main
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +52,72 @@ public class HomeScreen extends AppCompatActivity {
         viewPager2 = findViewById(R.id.VP);
         viewPager3 = findViewById(R.id.VP2Img);
         bottomNavigationView = findViewById(R.id.bottom_navi);
+<<<<<<< HEAD
+        firebaseAuth = FirebaseAuth.getInstance();
         SetBottomNavigationBar();
         SetViewPaperTravelocation();
         SetImgSlide();
+        SetupSearchView();
+=======
+        SetBottomNavigationBar();
+        SetViewPaperTravelocation();
+        SetImgSlide();
+>>>>>>> main
 
 
     }
 
+<<<<<<< HEAD
+    private void SetupSearchView() {
+        searchView = findViewById(R.id.searchview);
+        LocationList = findViewById(R.id.locationList);
+        List = new ArrayList<>();
+        List.add("Yen Bai");
+        List.add("Vung Tau");
+        List.add("Vinh Long");
+        List.add("Tuyen Quang");
+        List.add("Vinh");
+        List.add("Nha Trang");
+        List.add("Sai Gon");
+        List.add("Ha Noi");
+        List.add("An Giang");
+        List.add("Bac Lieu");
+        List.add("Bac Giang");
+        List.add("Dak Lak");
+        List.add("Dong Nai");
+        List.add("Can Tho");
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,List);
+        LocationList.setAdapter(adapter);
+        LocationList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String select = LocationList.getItemAtPosition(position).toString();
+                Toast.makeText(HomeScreen.this,""+select,Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                LocationList.setVisibility(View.VISIBLE);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                LocationList.setVisibility(View.VISIBLE);
+                adapter.getFilter().filter(newText);
+                if (newText.isEmpty())
+                    LocationList.setVisibility(View.GONE);
+                return false;
+            }
+        });
+
+    }
+
+=======
+>>>>>>> main
     private void SetBottomNavigationBar() {
         bottomNavigationView.setSelectedItemId(R.id.action_home);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -143,4 +219,24 @@ public class HomeScreen extends AppCompatActivity {
         });
         viewPager2.setPageTransformer(compositePageTransformer);
     }
+<<<<<<< HEAD
+
+    private void checkUserStatus() {
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if (user != null) {
+
+        } else {
+            startActivity( new Intent(HomeScreen.this, MainActivity.class));
+            finish();
+        }
+
+    }
+
+    @Override
+    public void onStart() {
+        checkUserStatus();
+        super.onStart();
+    }
+=======
+>>>>>>> main
 }

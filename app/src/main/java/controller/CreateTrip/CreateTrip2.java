@@ -37,7 +37,7 @@ public class CreateTrip2 extends AppCompatActivity implements LocationListener {
 
         locationsRecyclerView.setLayoutManager(layoutManager);
         btAdd = findViewById(R.id.btAddToList);
-
+        btAdd.setVisibility(View.VISIBLE);
 
         locationList = new ArrayList<>();
         locationList.add(new Location(R.drawable.ic_greengps, "Yên Bái", "Yen Bai, Viet Nam"));
@@ -46,9 +46,15 @@ public class CreateTrip2 extends AppCompatActivity implements LocationListener {
         locationList.add(new Location(R.drawable.ic_greengps, "Tuyên Quang", "Tuyen Quang, Viet Nam"));
         locationList.add(new Location(R.drawable.ic_greengps, "Vinh", "Vinh, Nghe An, Viet Nam"));
         locationList.add(new Location(R.drawable.ic_greengps, "Nha Trang", "Nha Trang, Khanh Hoa,  Viet Nam"));
-        locationList.add(new Location(R.drawable.ic_greengps, "Seven", "Sixteen"));
-        locationList.add(new Location(R.drawable.ic_greengps, "Eight", "Seventeen"));
-        locationList.add(new Location(R.drawable.ic_greengps, "Nine", "Eighteen"));
+        locationList.add(new Location(R.drawable.ic_greengps, "Sài Gòn", "Sai Gon, Ho Chi Minh, Viet Nam"));
+        locationList.add(new Location(R.drawable.ic_greengps, "Hà Nội", "Ha Noi, Viet Nam"));
+        locationList.add(new Location(R.drawable.ic_greengps, "An Giang", "An Giang, Viet Nam"));
+        locationList.add(new Location(R.drawable.ic_greengps, "Bạc Liêu", "Bac Lieu, Viet Nam"));
+        locationList.add(new Location(R.drawable.ic_greengps, "Bắc Giang", "Bac Giang, Viet Nam"));
+        locationList.add(new Location(R.drawable.ic_greengps, "Cần Thơ", "Can Tho, Viet Nam"));
+        locationList.add(new Location(R.drawable.ic_greengps, "Đắk Lắk", "Dak Lak, Viet Nam"));
+        locationList.add(new Location(R.drawable.ic_greengps, "Đồng Nai", "Dong Nai, Viet Nam"));
+
 
         locationAdapter = new LocationAdapter(locationList,this);
         locationsRecyclerView.setAdapter(locationAdapter);
@@ -56,30 +62,22 @@ public class CreateTrip2 extends AppCompatActivity implements LocationListener {
         btAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<Location> selectedLocations = locationAdapter.getSelectedLocation();
+                if (locationAdapter.getSelected() !=null) {
+                    Toast.makeText(CreateTrip2.this,locationAdapter.getSelected().getStrName(),Toast.LENGTH_SHORT).show();
+                    Intent intent= new Intent(CreateTrip2.this, Trip6Activity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(CreateTrip2.this,"No Selection",Toast.LENGTH_SHORT).show();
 
-                StringBuilder locationNames = new StringBuilder();
-                for(int i =0;i<selectedLocations.size();i++) {
-                    if (i==0) {
-                        locationNames.append(selectedLocations.get(i).strName);
-                    } else {
-                        locationNames.append("\n").append(selectedLocations.get(i).strName);
-                    }
                 }
-                Toast.makeText(CreateTrip2.this, locationNames.toString(),Toast.LENGTH_SHORT).show();
-                Intent intent= new Intent(CreateTrip2.this, Trip6Activity.class);
-                startActivity(intent);
+
             }
         });
     }
 
     @Override
     public void onLocationAction(Boolean isselected) {
-        if(isselected) {
             btAdd.setVisibility(View.VISIBLE);
-        } else {
-            btAdd.setVisibility(View.GONE);
-        }
     }
 
     @Override
