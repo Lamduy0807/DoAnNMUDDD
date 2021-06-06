@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import controller.CreateTrip.CreateTrip1;
-import controller.minh.ChangeProfileActivity;
+import controller.minh.ProfileActivity;
 import nga.uit.edu.mytravel.R;
 
 public class HomeScreen extends AppCompatActivity {
@@ -36,14 +36,13 @@ public class HomeScreen extends AppCompatActivity {
     private ViewPager2 viewPager3;
     private Handler slideHandler = new Handler();
     private BottomNavigationView bottomNavigationView ;
-<<<<<<< HEAD
+
     private SearchView searchView;
     private ListView LocationList;
     private ArrayList<String> List;
     private ArrayAdapter<String> adapter;
     FirebaseAuth firebaseAuth;
-=======
->>>>>>> main
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,22 +51,18 @@ public class HomeScreen extends AppCompatActivity {
         viewPager2 = findViewById(R.id.VP);
         viewPager3 = findViewById(R.id.VP2Img);
         bottomNavigationView = findViewById(R.id.bottom_navi);
-<<<<<<< HEAD
+
         firebaseAuth = FirebaseAuth.getInstance();
         SetBottomNavigationBar();
         SetViewPaperTravelocation();
         SetImgSlide();
         SetupSearchView();
-=======
-        SetBottomNavigationBar();
-        SetViewPaperTravelocation();
-        SetImgSlide();
->>>>>>> main
+
 
 
     }
 
-<<<<<<< HEAD
+
     private void SetupSearchView() {
         searchView = findViewById(R.id.searchview);
         LocationList = findViewById(R.id.locationList);
@@ -116,8 +111,7 @@ public class HomeScreen extends AppCompatActivity {
 
     }
 
-=======
->>>>>>> main
+
     private void SetBottomNavigationBar() {
         bottomNavigationView.setSelectedItemId(R.id.action_home);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -141,7 +135,7 @@ public class HomeScreen extends AppCompatActivity {
                     }
                     case R.id.action_pro:
                     {
-                        startActivity(new Intent(getApplicationContext(), ChangeProfileActivity.class));
+                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     }
@@ -219,7 +213,7 @@ public class HomeScreen extends AppCompatActivity {
         });
         viewPager2.setPageTransformer(compositePageTransformer);
     }
-<<<<<<< HEAD
+
 
     private void checkUserStatus() {
         FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -237,6 +231,5 @@ public class HomeScreen extends AppCompatActivity {
         checkUserStatus();
         super.onStart();
     }
-=======
->>>>>>> main
+
 }

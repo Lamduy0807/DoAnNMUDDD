@@ -6,70 +6,62 @@
     android:layout_height="match_parent"
     tools:context="controller.minh.ProfileActivity">
 
+
     <LinearLayout
-        android:id="@+id/layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/layout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:id="@+id/layout1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <controller.minh.CircleImageView
+            android:id="@+id/img"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/avrt" />
 
-            <controller.minh.CircleImageView
-                android:id="@+id/img"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="50dp"
-                android:layout_weight="1"
-                android:src="@drawable/avrt"
-                tools:layout_editor_absoluteX="76dp"
-                tools:layout_editor_absoluteY="92dp" />
+        <ImageView
+            android:id="@+id/btnChangePic"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
 
-            <LinearLayout
-                android:id="@+id/layout2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:orientation="vertical">
+            android:src="@drawable/ic_border_color_24px" />
 
-                <TextView
-                    android:id="@+id/txtUser"
-                    android:layout_width="200dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="60dp"
-                    android:text="SuperDog"
-                    android:textStyle="bold"
-                    android:textColor="@color/dgreen"
+    </LinearLayout>
 
-                    />
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout1">
 
-                <TextView
-                    android:id="@+id/txtID"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:textStyle="bold"
-                    android:text="ID: 190000232"
-                    android:textColor="@color/dgreen" />
-            </LinearLayout>
-        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="ID: 190000232"
+            android:textColor="@color/dgreen"
+            android:textStyle="bold" />
+
 
         <ImageView
             android:id="@+id/line"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
+
             android:layout_marginTop="25dp"
             android:src="@drawable/line" />
 
@@ -77,16 +69,16 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:textStyle="bold"
+
             android:text="Mail"
-            android:textColor="@color/dgreen" />
+            android:textColor="@color/dgreen"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
+
             android:hint="xxx@gmail.com"
             android:textSize="25sp" />
 
@@ -94,88 +86,69 @@
             android:id="@+id/line2"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
+
             android:src="@drawable/line" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:textStyle="bold"
-            android:text="Phone"
-            android:textColor="@color/dgreen" />
-
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:textSize="25sp" />
+            android:layout_weight="5"
+            android:gravity="right"
+            android:text="Update Password"
+            android:textColor="@color/dgreen"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/line3"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:src="@drawable/line" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:textStyle="bold"
-            android:text="Password"
-            android:textColor="@color/dgreen" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:inputType="textPassword"
-                android:text="newpassword"
-                android:textSize="25sp" />
-
-
-        <ImageView
-            android:id="@+id/line4"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:src="@drawable/line" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="5"
-                android:text="Update Profile"
-                android:gravity="right"
-                android:textColor="@color/dgreen"
-                android:textStyle="bold"
-                android:textSize="20sp"/>
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="25dp"
-                android:layout_weight="1"
-                android:layout_marginRight="25dp"
-                android:src="@drawable/ic_border_color_24px"
-                android:onClick="updateProfile"/>
-
-        </LinearLayout>
-
-        <Button
-            android:layout_width="200dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/button_botron"
-            app:backgroundTint="@null"
-            android:text="Logout"
-            android:textAllCaps="false"/>
+            android:id="@+id/ivUpdatePass"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_border_color_24px" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/button_botron"
+        android:text="Logout"
+        android:textAllCaps="false"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navi"
+        android:layout_marginTop="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/design_default_color_secondary"
+        app:itemIconTint="@color/custom_color_bottomnavigationbar"
+        app:itemTextColor="@color/custom_color_bottomnavigationbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_bottom_navi"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
