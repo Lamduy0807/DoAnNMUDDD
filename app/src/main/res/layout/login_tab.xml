@@ -49,17 +49,12 @@
         android:gravity="center_horizontal"
         android:text="Login"
         android:textAlignment="center"
-<<<<<<< HEAD
         android:textColorLink="#8f8787"
         android:textSize="16dp"
         android:textStyle="bold"
         app:backgroundTint="#a6e4e7"
-=======
-        android:textColorLink="#388E3C"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:backgroundTint="#DD611FA2"
->>>>>>> main
+
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

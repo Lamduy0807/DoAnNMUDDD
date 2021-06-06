@@ -70,7 +70,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-<<<<<<< HEAD
+
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
@@ -89,30 +89,7 @@
                         android:visibility="gone"
                         android:layout_marginTop="10dp"
                         android:id="@+id/locationList"/>
-=======
-                    android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/_4sdp"
-                        android:layout_marginLeft="@dimen/_4sdp"
-                        android:src="@drawable/ic_location"
-                        app:tint="@color/colorTextHint1" />
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_25sdp"
-                        android:layout_marginStart="@dimen/_8sdp"
-                        android:layout_marginEnd="@dimen/_8sdp"
-                        android:background="@null"
-                        android:hint="Enter your destination"
-                        android:imeOptions="actionDone"
-                        android:importantForAutofill="no"
-                        android:inputType="text"
-                        android:textColor="@color/colorTextPrimary1"
-                        android:textSize="@dimen/_13sdp" />
->>>>>>> main
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
