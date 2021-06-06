@@ -1,4 +1,4 @@
-package controller.CreateTrip;
+    package controller.CreateTrip;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,11 +24,13 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
     private List<Location> locations;
     private List<Location> locationListFull;
     private LocationListener locationListener;
+    private int checkedPosition = 0; // = -1: no selection
 
     public LocationAdapter(List<Location> locations, LocationListener locationListener) {
         this.locations = locations;
         this.locationListener = locationListener;
         locationListFull = new ArrayList<>(locations);
+
     }
 
 
@@ -118,32 +120,43 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
             imageLocation.setImageResource(location.image);
             textName.setText(location.strName);
             textDetail.setText(location.strDetail);
-            if(location.isSelected) {
-                viewbackground.setBackgroundResource(R.drawable.location_selected_background);
-                imageSelected.setVisibility(View.VISIBLE);
-            } else {
+            if (checkedPosition == -1) {
                 viewbackground.setBackgroundResource(R.drawable.location_background);
+                imageLocation.setBackgroundResource(R.drawable.location_background);
+
                 imageSelected.setVisibility(View.GONE);
+            } else {
+                if (checkedPosition == getBindingAdapterPosition()) {
+                    viewbackground.setBackgroundResource(R.drawable.location_selected_background);
+                    imageLocation.setBackgroundResource(R.drawable.location_selected_background);
+                    imageSelected.setVisibility(View.VISIBLE);
+                } else {
+                    viewbackground.setBackgroundResource(R.drawable.location_background);
+                    imageLocation.setBackgroundResource(R.drawable.location_background);
+
+                    imageSelected.setVisibility(View.GONE);
+                }
             }
-            layoutLocation.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (location.isSelected) {
-                        viewbackground.setBackgroundResource(R.drawable.location_background);
-                        imageSelected.setVisibility(View.GONE);
-                        location.isSelected = false;
-                        if(getSelectedLocation().size() == 0){
-                            locationListener.onLocationAction(false);
-                        }
-                    } else {
-                        viewbackground.setBackgroundResource(R.drawable.location_selected_background);
-                        imageSelected.setVisibility(View.VISIBLE);
-                        location.isSelected = true;
-                        locationListener.onLocationAction(true);
+                    viewbackground.setBackgroundResource(R.drawable.location_selected_background);
+                    imageLocation.setBackgroundResource(R.drawable.location_selected_background);
+                    imageSelected.setVisibility(View.VISIBLE);
+                    if (checkedPosition != getBindingAdapterPosition()) {
+                        notifyItemChanged(checkedPosition);
+                        checkedPosition = getBindingAdapterPosition();
                     }
                 }
             });
         }
 
+    }
+
+    public Location getSelected(){
+        if (checkedPosition != -1) {
+            return locations.get(checkedPosition);
+        }
+        return null;
     }
 }
