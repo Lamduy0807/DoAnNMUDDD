@@ -3,10 +3,32 @@
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <color name="teal_200">#D1F1D2</color>
+    <color name="teal_700">#C4EAC5</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="dgreen">#0D602E</color>
     <color name="gray">#111111</color>
+
+    <color name="colorPrimary">#41D3BD</color>
+    <color name="colorAccent">#FDA14F</color>
+    <color name="colorTextIcons">#FFFFFF</color>
+    <color name="colorTextPrimary">#212121</color>
+    <color name="colorTextSecondary">#757575</color>
+    <color name="colorBackground">#EEEEEE</color>
+
+    <color name="colorPrimary1">#0B144C</color>
+    <color name="colorPrimaryDark1">#0B144C</color>
+    <color name="colorAccent1">#03DAC5</color>
+    <color name="colorTextPrimary1">#212121</color>
+    <color name="colorTextSecondary1">#757575</color>
+    <color name="colorTextHint1">#BDBDBD</color>
+    <color name="colorSelectedMenu1">#408DED</color>
+    <color name="colorBackground1">#F2F5Fe</color>
+
+    <color name="grey">#393838</color>
+    <color name="LightGreen">#0D602E</color>
+    <color name="Main">#DD611FA2</color>
+    <color name="grey1">#BAB2B2</color>
+
 </resources>

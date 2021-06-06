@@ -1,136 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login"
     android:orientation="vertical"
-    tools:context="controller.mytravel.LoginActivity">
+    tools:context="controller.mytravel.LoginActivity"
+    android:background="@drawable/login"
+    >
 
-    <EditText
-        android:id="@+id/txtUsername"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="@string/user_name"
-        android:textColor="@color/white"
-        android:textFontWeight="@android:integer/config_longAnimTime"
-        android:textSize="30sp"
-        android:background="@android:color/transparent"
-        android:textStyle="normal" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_above="@+id/btnCreateAcc">
+        <EditText
+            android:id="@+id/txtUsername"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
+            android:ems="10"
+            android:inputType="textPersonName"
 
-    <ImageView
-        android:id="@+id/img_icPerson"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="-45dp"
-        android:layout_marginRight="60dp"
-        app:srcCompat="@drawable/ic_person" />
+            android:hint="@string/user_name"
+            android:textColor="@color/white"
 
-    <TextView
-        android:id="@+id/txtUnderLine"
-        android:layout_width="300dp"
-        android:layout_height="1dp"
-        android:layout_gravity="center_horizontal"
+            android:textFontWeight="@android:integer/config_longAnimTime"
+            android:textSize="30sp"
+            android:background="@android:color/transparent"
+            android:textStyle="normal" />
 
-        android:layout_marginTop="10dp"
-        android:layout_weight="0"
-        android:background="@color/black"
-        android:text="TextView" />
+        <ImageView
+            android:id="@+id/img_icPerson"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="-45dp"
+            android:layout_marginRight="60dp"
+            app:srcCompat="@drawable/ic_person" />
 
-    <EditText
-        android:id="@+id/txtPassword"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
-        android:hint="@string/pass_word"
-        android:textColor="@color/white"
-        android:textFontWeight="@android:integer/config_longAnimTime"
-        android:textSize="30sp"
-        android:textStyle="normal"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:background="@android:color/transparent"
-        />
-    <ImageView
-        android:id="@+id/img_icLock"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="-45dp"
-        android:layout_marginRight="60dp"
-        app:srcCompat="@drawable/ic_lock" />
+        <TextView
+            android:id="@+id/txtUnderLine"
+            android:layout_width="300dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center_horizontal"
+
+            android:layout_marginTop="10dp"
+            android:layout_weight="0"
+            android:background="@color/black"
+            android:text="TextView" />
+
+        <EditText
+            android:id="@+id/txtPassword"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
+
+            android:hint="@string/pass_word"
+            android:textColor="@color/white"
+
+            android:textFontWeight="@android:integer/config_longAnimTime"
+            android:textSize="30sp"
+            android:textStyle="normal"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:background="@android:color/transparent"
+            />
+        <ImageView
+            android:id="@+id/img_icLock"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="-45dp"
+            android:layout_marginRight="60dp"
+            app:srcCompat="@drawable/ic_lock" />
 
 
-    <TextView
-        android:id="@+id/txtUnderLine2"
-        android:layout_width="300dp"
-        android:layout_height="1dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_weight="0"
-        android:background="@color/black"
-        android:text="TextView" />
-    <TextView
-        android:id="@+id/txtForgetPass"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:text="Remember me?"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/white"
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/txtUnderLine2"
+            android:layout_width="300dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0"
+            android:background="@color/black"
+            android:text="TextView" />
+        <TextView
+            android:id="@+id/txtForgetPass"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="Remember me?"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="280dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="50dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/bglogin"
-        android:text="Login"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp"
-        app:backgroundTintMode="multiply" />
-    <ProgressBar
-        android:id="@+id/Progressbar"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:visibility="invisible"
-        android:layout_gravity="center"/>
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="280dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/bglogin"
+            android:text="Login"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:backgroundTintMode="multiply" />
+        <ProgressBar
+            android:id="@+id/Progressbar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:visibility="invisible"
+            android:layout_gravity="center"/>
 
+
+
+    </LinearLayout>
     <Button
         android:id="@+id/btnCreateAcc"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
+        android:background="@android:color/transparent"
         android:text="@string/register"
         android:textAlignment="center"
+        android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="22sp"
-        android:textAllCaps="false"
-        android:background="@android:color/transparent"
         app:backgroundTintMode="multiply"
-        />
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"/>
 
 
-</LinearLayout>
+</RelativeLayout>
 

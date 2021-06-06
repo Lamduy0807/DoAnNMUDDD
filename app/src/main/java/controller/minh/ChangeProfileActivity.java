@@ -1,48 +1,57 @@
 package controller.minh;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.view.View;
+import android.view.MenuItem;
 
-import controller.mytravel.LoginActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import controller.CreateTrip.CreateTrip1;
+import controller.mytravel.HomeScreen;
 import nga.uit.edu.mytravel.R;
 
 public class ChangeProfileActivity extends AppCompatActivity {
-    CircleImageView profileimg;
-    Uri ImageUri;
+    private BottomNavigationView bottomNavigationView ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_profile);
-        profileimg = findViewById(R.id.img);
+        bottomNavigationView = findViewById(R.id.bottom_navi);
+        SetBottomNavigationBar();
     }
+    private void SetBottomNavigationBar() {
+        bottomNavigationView.setSelectedItemId(R.id.action_pro);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId())
+                {
+                    case R.id.action_home:
+                    {
+                        startActivity(new Intent(getApplicationContext(), HomeScreen.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    }
+                    case R.id.action_trip:
+                    {
+                        startActivity(new Intent(getApplicationContext(), CreateTrip1.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    }
+                    case R.id.action_noti:
+                    {
 
-    public void changePass(View view) {
-        Intent intent= new Intent(ChangeProfileActivity.this, ChangePasswordActivity.class);
-        startActivity(intent);
-    }
-
-    public void Close(View view) {
-        Intent intent1= new Intent(ChangeProfileActivity.this, ProfileActivity.class);
-        startActivity(intent1);
-    }
-
-    public void openGallery(View view) {
-        Intent openGallerryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-        startActivityForResult(openGallerryIntent,1000);
-    }
-   protected void onActivityResult(int requestCode,int resultCode,@androidx.annotation.Nullable Intent data){
-        super.onActivityResult(requestCode,resultCode,data);
-        if(requestCode==1000){
-            if(resultCode== Activity.RESULT_OK){
-                ImageUri = data.getData();
-                profileimg.setImageURI(ImageUri);
+                    }
+                    case R.id.action_pro:
+                    {
+                        return true;
+                    }
+                }
+                return false;
             }
-        }
-   }
+        });
+    }
 }
