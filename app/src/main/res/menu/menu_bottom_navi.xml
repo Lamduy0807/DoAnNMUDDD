@@ -6,9 +6,7 @@
     <item android:id="@+id/action_trip"
         android:title="@string/action_trip"
         android:icon="@drawable/icon_trip"/>
-    <item android:id="@+id/action_noti"
-        android:title="@string/action_noti"
-        android:icon="@drawable/icon_noti"/>
+
     <item android:id="@+id/action_pro"
         android:title="@string/action_pro"
         android:icon="@drawable/icon_pro"/>

@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,7 +30,15 @@ public class CreateTrip2 extends AppCompatActivity implements LocationListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_trip_2);
-
+        Toolbar tb = findViewById(R.id.tb);
+        setSupportActionBar(tb);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        tb.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         RecyclerView locationsRecyclerView = findViewById(R.id.LocationRecyclerView);
         locationsRecyclerView.setHasFixedSize(true);

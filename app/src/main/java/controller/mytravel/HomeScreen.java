@@ -123,15 +123,10 @@ public class HomeScreen extends AppCompatActivity {
                     {
                         return true;
                     }
-                    case R.id.action_trip:
-                    {
+                    case R.id.action_trip: {
                         startActivity(new Intent(getApplicationContext(), CreateTrip1.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
-                    }
-                    case R.id.action_noti:
-                    {
-
                     }
                     case R.id.action_pro:
                     {

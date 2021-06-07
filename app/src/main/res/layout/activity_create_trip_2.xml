@@ -7,17 +7,20 @@
     android:animateLayoutChanges="true"
     android:background="@color/colorBackground"
     tools:context="controller.CreateTrip.CreateTrip2">
-
-    <LinearLayout
-        android:id="@+id/layoutHeader"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="@color/colorPrimary"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="10dp"
-        app:layout_constraintTop_toTopOf="parent">
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/white"
+        app:title=""
+        android:layoutDirection="rtl"
+        app:navigationIcon="@drawable/ic_baseline_close_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/LocationRecyclerView"
@@ -28,7 +31,7 @@
         android:padding="5dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@id/btAddToList"
-        app:layout_constraintTop_toBottomOf="@id/layoutHeader"
+        app:layout_constraintTop_toBottomOf="@id/tb"
         />
 
     <Button
