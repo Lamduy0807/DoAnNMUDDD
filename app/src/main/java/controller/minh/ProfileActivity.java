@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,6 +20,7 @@ import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,6 +36,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 
+import controller.CreateTrip.CreateTrip1;
+import controller.mytravel.HomeScreen;
 import controller.mytravel.LoginActivity;
 import controller.mytravel.LoginScreen;
 import nga.uit.edu.mytravel.R;
@@ -50,6 +54,7 @@ public class ProfileActivity extends AppCompatActivity {
   private TextView txtEmail,txtID;
   private Button btnLogout;
   private ImageView ivUpdatePass,ivSave;
+  private BottomNavigationView bottomNavigationView ;
 
 
 
@@ -62,6 +67,8 @@ public class ProfileActivity extends AppCompatActivity {
        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
        storageReference = FirebaseStorage.getInstance().getReference().child("Profile Pic");
       btnLogout=findViewById(R.id.btnLogout);
+      bottomNavigationView = findViewById(R.id.bottom_navipro);
+      SetBottomNavigationBar();
        profilePic=findViewById(R.id.img);
        changePic=findViewById(R.id.btnChangePic);
        ivSave=findViewById(R.id.ivSave);
@@ -179,6 +186,32 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
     }
-
+    private void SetBottomNavigationBar() {
+        bottomNavigationView.setSelectedItemId(R.id.action_pro);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId())
+                {
+                    case R.id.action_home:
+                    {
+                        startActivity(new Intent(getApplicationContext(), HomeScreen.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    }
+                    case R.id.action_trip: {
+                        startActivity(new Intent(getApplicationContext(), CreateTrip1.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    }
+                    case R.id.action_pro:
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+    }
    
 }

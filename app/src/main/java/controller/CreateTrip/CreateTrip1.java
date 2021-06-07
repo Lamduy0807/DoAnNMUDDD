@@ -66,10 +66,6 @@ public class CreateTrip1 extends AppCompatActivity {
 
                         return true;
                     }
-                    case R.id.action_noti:
-                    {
-
-                    }
                     case R.id.action_pro:
                     {
                         startActivity(new Intent(getApplicationContext(), ProfileActivity.class));

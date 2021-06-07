@@ -26,7 +26,8 @@
             android:value="@string/map_key" />
 
         <activity android:name="controller.CreateTrip.DetailPlaceActivity" />
-        <activity android:name="controller.CreateTrip.Trip6Activity" />
+        <activity android:name="controller.CreateTrip.Trip6Activity"
+            android:parentActivityName="controller.CreateTrip.CreateTrip2"/>
 
         <activity android:name="controller.mytravel.HomeScreen" >
         <intent-filter>
@@ -37,11 +38,13 @@
     </activity>
 
         <activity android:name="controller.minh.ProfileActivity" />
-        <activity android:name="controller.minh.ChangePasswordActivity" />
+        <activity android:name="controller.minh.ChangePasswordActivity"
+            android:parentActivityName="controller.minh.ProfileActivity"/>
         <activity android:name="controller.mytravel.RegisterActivity" />
         <activity android:name="controller.mytravel.LoginActivity" />
         <activity android:name="controller.CreateTrip.CreateTrip1" />
-        <activity android:name="controller.CreateTrip.CreateTrip2" />
+        <activity android:name="controller.CreateTrip.CreateTrip2"
+            android:parentActivityName="controller.CreateTrip.CreateTrip1"/>
         <activity android:name="controller.mytravel.MainActivity">
 
         </activity>

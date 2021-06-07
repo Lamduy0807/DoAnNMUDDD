@@ -2,6 +2,7 @@ package controller.minh;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,6 +29,10 @@ public class ChangePasswordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
+        Toolbar tb = findViewById(R.id.tb);
+        setSupportActionBar(tb);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         edPass = findViewById(R.id.edPass);
         edNewPass = findViewById(R.id.edNewPass);
         edConfirmPass = findViewById(R.id.edConfirmPass);
