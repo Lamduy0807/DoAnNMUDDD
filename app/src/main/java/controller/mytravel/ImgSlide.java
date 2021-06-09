@@ -1,13 +1,13 @@
 package controller.mytravel;
 
 public class ImgSlide {
-    int Url;
+    String Url;
 
-    public ImgSlide(int url) {
+    public ImgSlide(String url) {
         Url = url;
     }
 
-    public int getUrl() {
+    public String getUrl() {
         return Url;
     }
 }

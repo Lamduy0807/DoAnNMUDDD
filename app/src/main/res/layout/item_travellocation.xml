@@ -88,7 +88,7 @@
             android:layout_marginBottom="2dp"
             android:paddingTop="4dp"
             android:textColor="#FFFFFF"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/imglocation"/>
 

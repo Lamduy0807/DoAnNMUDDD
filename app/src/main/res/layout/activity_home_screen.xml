@@ -179,13 +179,14 @@
                             android:elevation="@dimen/_8sdp">
 
                             <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/imgDiscovery1"
                                 android:layout_width="150dp"
                                 android:layout_height="match_parent"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/cncr"
                                 app:riv_corner_radius="@dimen/_8sdp" />
 
                             <TextView
+                                android:id="@+id/tvDiscovery1"
                                 android:layout_width="150dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="bottom"
@@ -194,7 +195,6 @@
                                 android:shadowDx="0"
                                 android:shadowDy="0"
                                 android:shadowRadius="10"
-                                android:text="Chợ nổi Cái Răng - Cần Thơ"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/_13sdp"
                                 android:textStyle="bold" />
@@ -209,13 +209,14 @@
                             android:elevation="@dimen/_8sdp">
 
                             <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/imgDiscovery2"
                                 android:layout_width="150dp"
                                 android:layout_height="match_parent"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/lm81"
                                 app:riv_corner_radius="@dimen/_8sdp" />
 
                             <TextView
+                                android:id="@+id/tvDiscovery2"
                                 android:layout_width="150dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="bottom"
@@ -224,7 +225,6 @@
                                 android:shadowDx="0"
                                 android:shadowDy="0"
                                 android:shadowRadius="10"
-                                android:text="Land Mark 81 - TP Hồ Chí Minh"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/_13sdp"
                                 android:textStyle="bold" />
@@ -238,13 +238,14 @@
                             android:elevation="@dimen/_8sdp">
 
                             <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/imgDiscovery3"
                                 android:layout_width="150dp"
                                 android:layout_height="match_parent"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/nhd"
                                 app:riv_corner_radius="@dimen/_8sdp" />
 
                             <TextView
+                                android:id="@+id/tvDiscovery3"
                                 android:layout_width="150dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="bottom"
@@ -253,7 +254,6 @@
                                 android:shadowDx="0"
                                 android:shadowDy="0"
                                 android:shadowRadius="10"
-                                android:text="Ngọn Hải Đăng - Vũng Tàu"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/_13sdp"
                                 android:textStyle="bold" />
