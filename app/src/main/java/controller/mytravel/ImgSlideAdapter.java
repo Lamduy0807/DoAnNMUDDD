@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.makeramen.roundedimageview.RoundedImageView;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -53,7 +54,7 @@ public class ImgSlideAdapter extends RecyclerView.Adapter<ImgSlideAdapter.ImgSli
         }
         void setImage(ImgSlide imgSlide)
         {
-            imageView.setImageResource(imgSlide.getUrl());
+            Picasso.get().load(imgSlide.getUrl()).into(imageView);
         }
     }
     private Runnable runnable = new Runnable() {

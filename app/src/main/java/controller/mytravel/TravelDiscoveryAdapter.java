@@ -9,6 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.flaviofaria.kenburnsview.KenBurnsView;
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import nga.uit.edu.mytravel.R;
@@ -37,7 +40,7 @@ public class TravelDiscoveryAdapter extends RecyclerView.Adapter<TravelDiscovery
     }
 
     static class TravelDiscoveryViewHolder extends RecyclerView.ViewHolder{
-        private ImageView imageView;
+        private KenBurnsView imageView;
         private TextView title, location;
         public TravelDiscoveryViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -47,7 +50,7 @@ public class TravelDiscoveryAdapter extends RecyclerView.Adapter<TravelDiscovery
         }
         void setLocationData(TravelDiscovery travelDiscovery)
         {
-            imageView.setImageResource(travelDiscovery.URL);
+            Picasso.get().load(travelDiscovery.URL).into(imageView);
             title.setText(travelDiscovery.title);
             location.setText(travelDiscovery.location);
         }

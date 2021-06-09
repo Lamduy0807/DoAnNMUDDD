@@ -126,7 +126,7 @@ public class LoginFragment extends Fragment {
                     }
                     else
                     {
-                        Toast.makeText(getContext(),"Sign up fail!",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(),"Login fail, try again!",Toast.LENGTH_LONG).show();
                     }
                 }
             });
