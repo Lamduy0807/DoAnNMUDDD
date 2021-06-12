@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -31,6 +33,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.squareup.picasso.Picasso;
+import com.theartofdev.edmodo.cropper.CropImage;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -71,7 +74,7 @@ public class ProfileActivity extends AppCompatActivity {
       SetBottomNavigationBar();
        profilePic=findViewById(R.id.img);
        changePic=findViewById(R.id.btnChangePic);
-       ivSave=findViewById(R.id.ivSave);
+//       ivSave=findViewById(R.id.ivSave);
        txtEmail=findViewById(R.id.txtmail);
        txtEmail.setText(mAuth.getCurrentUser().getEmail());
        txtID=findViewById(R.id.txtID);
@@ -94,17 +97,18 @@ public class ProfileActivity extends AppCompatActivity {
        changePic.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Intent openGallerryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-               startActivityForResult(openGallerryIntent,1000);
+//               Intent openGallerryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+//               startActivityForResult(openGallerryIntent,1000);
+               CropImage.activity().setAspectRatio(1,1).start(ProfileActivity.this);
 
            }
        });
-       ivSave.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               uploadProfileImage();
-           }
-       });
+//       ivSave.setOnClickListener(new View.OnClickListener() {
+//           @Override
+//           public void onClick(View v) {
+//               uploadProfileImage();
+//           }
+//       });
 
        getUserInfo();
 
@@ -177,15 +181,51 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==1000){
+//        if(requestCode==1000){
+//            if(resultCode== RESULT_OK && data!= null){
+//                imageUri = data.getData();
+//                profilePic.setImageURI(imageUri);
+//                Toast.makeText(this, "Update Sucess, Please click Save button.", Toast.LENGTH_SHORT).show();
+//                AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+//                alertDialog.setTitle("Save change?");
+//                alertDialog.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        uploadProfileImage();
+//                    }
+//                });
+//                alertDialog.show();
+//            }
+//
+//        }
+        if(requestCode==CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
             if(resultCode== RESULT_OK && data!= null){
-                imageUri = data.getData();
+                CropImage.ActivityResult result = CropImage.getActivityResult(data);
+                imageUri = result.getUri();
                 profilePic.setImageURI(imageUri);
+                Toast.makeText(this, "Update Sucess, Please click Save button.", Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+                alertDialog.setTitle("Save change?");
+                alertDialog.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        uploadProfileImage();
+                    }
+                });
+                alertDialog.show();
+            }
+            else{
+                Toast.makeText(this, "Error, Try Again", Toast.LENGTH_SHORT).show();
             }
 
         }
+        else{
+            Toast.makeText(this, "Error, Try Again", Toast.LENGTH_SHORT).show();
+        }
+        }
 
-    }
+
+
     private void SetBottomNavigationBar() {
         bottomNavigationView.setSelectedItemId(R.id.action_pro);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
