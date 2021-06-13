@@ -7,51 +7,101 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import nga.uit.edu.mytravel.R;
 
 public class Trip6Activity extends AppCompatActivity implements OnMapReadyCallback{
     private GoogleMap map;
-
     private RecyclerView recyclerView;
-    String strPlace[], strAddress[];
-    int images[]={R.drawable.van_thanh_mieu,R.drawable.van_thanh_mieu,R.drawable.van_thanh_mieu,R.drawable.van_thanh_mieu};
-    int imgGps=R.drawable.ic_greengps;
+    private List<Place> mList;
+    private PlaceAdapter placeAdapter;
+
+    private DatabaseReference mRef;
+
+    public static String path="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip6);
+
+        Intent intent = getIntent();
+        path=intent.getStringExtra("strName");
+
+        mRef = FirebaseDatabase.getInstance().getReference().child("Place").child(path);
+
+        addControls();
+
+        loadData();
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
         .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
         Toolbar tb = findViewById(R.id.tb);
         setSupportActionBar(tb);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        addControls();
+
+
+
+    }
+
+    private void loadData() {
+
+        mRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Place place = dataSnapshot.getValue(Place.class);
+                    mList.add(place);
+
+                }
+                placeAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 
 
     private void addControls() {
 
-
-        strPlace=getResources().getStringArray(R.array.list_place);
-        strAddress=getResources().getStringArray(R.array.address_place);
         recyclerView= this.<RecyclerView>findViewById(R.id.recyclerView);
-        PlaceAdapter placeAdapter=new PlaceAdapter(this,strPlace, strAddress,images);
+        mList =new ArrayList<>();
+        placeAdapter=new PlaceAdapter(Trip6Activity.this,mList);
+
         recyclerView.setAdapter(placeAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
 
     }
 
@@ -59,22 +109,37 @@ public class Trip6Activity extends AppCompatActivity implements OnMapReadyCallba
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         map = googleMap;
-        //LatLng HaNoii = new LatLng(21.60140226455056, 105.65808202184448);
 
-        // CHỖ NÀY CẦN LẤY TỪ CƠ SỞ DỮ LIỆU
-        // CẦN CÓ TÊN PLACE, TITLE CÓ DẤU CHO PLACE
-        // CẦN TỌA ĐỘ
-        //KHI BẤM VÀO MỖI ĐỊA CHỈ SẼ LOAD HẾT CÁC MAKER LÊN MAP
-        LatLng VanThanhMieu = new LatLng(10.243557795769036, 105.98465411534355);
-        map.addMarker(new MarkerOptions().position(VanThanhMieu).title("Văn Thánh Miếu"));
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(VanThanhMieu,13));
 
-        LatLng DinhLongThanh = new LatLng(10.239409866144607, 105.98989378465645);
-        map.addMarker(new MarkerOptions().position(DinhLongThanh).title("Đình Long Thanh"));
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(DinhLongThanh,13));
+        map.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+            @Override
+            public void onMapLoaded() {
+                int i=0;
+                List<LatLng> loc = new ArrayList<>();
+                for(Place pplace : mList)
+                {
+                    loc.add(new LatLng(pplace.getViDo(),pplace.getKinhDo()));
+                }
 
-        LatLng VinhLong = new LatLng(10.239381668635907, 105.96243661914919);
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(VinhLong, 13));
+                for (LatLng latLng : loc)
+                {
+                    map.addMarker(new MarkerOptions()
+                            .position(latLng)
+                            .title(mList.get(i).getTitle()));
+                    i++;
+
+                }
+                LatLngBounds.Builder builder = new LatLngBounds.Builder();
+                builder.include(loc.get(0)); //điểm A
+                builder.include(loc.get(loc.size() - 1)); //điểm B
+                LatLngBounds bounds = builder.build();
+                CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, 200);
+                map.moveCamera(cu);
+                map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+
+
+            }
+        });
 
 
 

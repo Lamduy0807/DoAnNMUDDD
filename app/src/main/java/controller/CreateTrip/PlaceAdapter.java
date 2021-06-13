@@ -13,22 +13,24 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
+import java.io.Serializable;
+import java.util.List;
+
 import controller.mytravel.LoginActivity;
 import nga.uit.edu.mytravel.R;
 
-public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder> {
-    String data1[], data2[];
-    int images[];
-    Context context;
+public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder> implements Serializable {
 
-    public PlaceAdapter(Context ct, String strPlace[], String strAddress[], int img[])
-    {
-        context=ct;
-        data1=strPlace;
-        data2=strAddress;
-        images=img;
+    private Context context;
+    private List<Place> placeList;
 
+    public PlaceAdapter(Context context, List<Place> placeList) {
+        this.context = context;
+        this.placeList = placeList;
     }
+
     @NonNull
     @Override
     public PlaceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -40,18 +42,19 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
     @Override
     public void onBindViewHolder(@NonNull PlaceViewHolder holder, int position) {
 
-        holder.txtPlace.setText(data1[position]);
-        holder.txtAddressPlace.setText(data2[position]);
-        holder.myImageView.setImageResource(images[position]);
-        holder.imgGPS.setImageResource(R.drawable.ic_greengps);
+        Place mPlace = placeList.get(position);
 
-        holder.layoutPlace.setOnClickListener(new View.OnClickListener() {
+        holder.txtTitle.setText(mPlace.getTitle());
+        holder.txtAddressPlace.setText(mPlace.getsAddress());
+        Glide.with(context).load(mPlace.getLinkHinh()).into(holder.imgPlace);
+
+
+       holder.layoutPlace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(context, DetailPlaceActivity.class);
-                intent.putExtra("data1",data1[position]);
-                intent.putExtra("data2",data2[position]);
-                intent.putExtra("images",images[position]);
+                intent.putExtra("title", mPlace.getTitle());
+                intent.putExtra("strName",Trip6Activity.path );
                 context.startActivity(intent);
             }
         });
@@ -60,22 +63,22 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
     @Override
     public int getItemCount() {
 
-        return data1.length;
+        return placeList.size();
     }
 
     public class PlaceViewHolder extends RecyclerView.ViewHolder {
 
         ConstraintLayout layoutPlace;
-        TextView txtPlace, txtAddressPlace;
-        ImageView myImageView, imgGPS;
+        TextView txtTitle;
+        TextView txtAddressPlace;
+        ImageView imgPlace;
 
         public PlaceViewHolder(@NonNull View itemView) {
             super(itemView);
             layoutPlace=itemView.findViewById(R.id.layoutPlace);
-            txtPlace=itemView.findViewById(R.id.txtPlace);
+            txtTitle=itemView.findViewById(R.id.txtTitlePlace);
             txtAddressPlace=itemView.findViewById(R.id.txtAddressPlace);
-            myImageView=itemView.findViewById(R.id.myImageView);
-            imgGPS=itemView.findViewById(R.id.imgGPS);
+            imgPlace=itemView.findViewById(R.id.myImageView);
 
         }
 

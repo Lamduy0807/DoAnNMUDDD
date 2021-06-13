@@ -1,5 +1,6 @@
     package controller.CreateTrip;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,22 +20,28 @@ import java.util.List;
 
 import nga.uit.edu.mytravel.R;
 
-public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.LocationViewHolder> implements Filterable {
+//public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.LocationViewHolder> implements Filterable {
+    public class LocationAdapter extends RecyclerView.Adapter<controller.CreateTrip.LocationAdapter.LocationViewHolder> {
+
+    private Context context;
 
     private List<Location> locations;
+
     private List<Location> locationListFull;
     private LocationListener locationListener;
     private int checkedPosition = 0; // = -1: no selection
 
-    public LocationAdapter(List<Location> locations, LocationListener locationListener) {
+    /*public LocationAdapter(List<Location> locations, LocationListener locationListener) {
         this.locations = locations;
         this.locationListener = locationListener;
         locationListFull = new ArrayList<>(locations);
 
+    }*/
+
+    public LocationAdapter(Context context, List<Location> locations) {
+        this.context = context;
+        this.locations = locations;
     }
-
-
-
 
     @NonNull
     @Override
@@ -46,7 +53,7 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
 
     @Override
     public void onBindViewHolder(@NonNull LocationViewHolder holder, int position) {
-        holder.bindLocation(locations.get(position));
+       holder.bindLocation(locations.get(position));
     }
 
     @Override
@@ -64,7 +71,7 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
         return selectedLocation;
     }
 
-    @Override
+   /* @Override
     public Filter getFilter() {
         return filter;
     }
@@ -97,42 +104,46 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
             locations.addAll((List) results.values);
             notifyDataSetChanged();
         }
-    };
+    };*/
 
     class LocationViewHolder extends RecyclerView.ViewHolder {
         ConstraintLayout layoutLocation;
         View viewbackground;
-        RoundedImageView imageLocation;
-        TextView textName, textDetail;
+        //RoundedImageView imageLocation;
+        TextView textName;
+        TextView textDetail;
         ImageView imageSelected;
 
         public LocationViewHolder(@NonNull View itemView) {
             super(itemView);
+
             layoutLocation = itemView.findViewById(R.id.layoutLocation);
+
             viewbackground = itemView.findViewById(R.id.viewBackground);
-            imageLocation = itemView.findViewById(R.id.imageLocation);
+
+            //imageLocation = itemView.findViewById(R.id.imageLocation);
             textName = itemView.findViewById(R.id.textName);
             textDetail = itemView.findViewById(R.id.textDetail);
             imageSelected = itemView.findViewById(R.id.imageSelected);
         }
 
         void bindLocation(final Location location) {
-            imageLocation.setImageResource(location.image);
+            //imageLocation.setImageResource(location.image);
             textName.setText(location.strName);
             textDetail.setText(location.strDetail);
             if (checkedPosition == -1) {
                 viewbackground.setBackgroundResource(R.drawable.location_background);
-                imageLocation.setBackgroundResource(R.drawable.location_background);
+                //imageLocation.setBackgroundResource(R.drawable.location_background);
 
                 imageSelected.setVisibility(View.GONE);
             } else {
                 if (checkedPosition == getBindingAdapterPosition()) {
                     viewbackground.setBackgroundResource(R.drawable.location_selected_background);
-                    imageLocation.setBackgroundResource(R.drawable.location_selected_background);
+                   // imageLocation.setBackgroundResource(R.drawable.location_selected_background);
                     imageSelected.setVisibility(View.VISIBLE);
                 } else {
                     viewbackground.setBackgroundResource(R.drawable.location_background);
-                    imageLocation.setBackgroundResource(R.drawable.location_background);
+                    //imageLocation.setBackgroundResource(R.drawable.location_background);
 
                     imageSelected.setVisibility(View.GONE);
                 }
@@ -141,12 +152,14 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
                 @Override
                 public void onClick(View v) {
                     viewbackground.setBackgroundResource(R.drawable.location_selected_background);
-                    imageLocation.setBackgroundResource(R.drawable.location_selected_background);
+                   // imageLocation.setBackgroundResource(R.drawable.location_selected_background);
                     imageSelected.setVisibility(View.VISIBLE);
                     if (checkedPosition != getBindingAdapterPosition()) {
                         notifyItemChanged(checkedPosition);
                         checkedPosition = getBindingAdapterPosition();
                     }
+
+
                 }
             });
         }
