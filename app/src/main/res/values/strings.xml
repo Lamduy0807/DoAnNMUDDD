@@ -17,19 +17,6 @@
     <string name="action_noti">Notification</string>
     <string name="action_pro">Profile</string>
 
-    <string-array name="list_place">
-        <item>Văn Thánh Miếu Vĩnh Long</item>
-        <item>Đình Long Thanh</item>
-        <item>Chợ Nổi Trà Ôn</item>
-        <item>Cầu Mỹ Thuận</item>
-    </string-array>
-
-    <string-array name="address_place">
-        <item>Tran Phu, Phuong 4, Vinh Long</item>
-        <item>Phuong 5, Vinh Long</item>
-        <item>Update later</item>
-        <item>Update later</item>
-    </string-array>
 
 
 </resources>

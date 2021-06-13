@@ -21,7 +21,7 @@ import java.util.List;
 import nga.uit.edu.mytravel.R;
 
 //public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.LocationViewHolder> implements Filterable {
-    public class LocationAdapter extends RecyclerView.Adapter<controller.CreateTrip.LocationAdapter.LocationViewHolder> {
+    public class LocationAdapter extends RecyclerView.Adapter<controller.CreateTrip.LocationAdapter.LocationViewHolder> implements Filterable{
 
     private Context context;
 
@@ -31,12 +31,12 @@ import nga.uit.edu.mytravel.R;
     private LocationListener locationListener;
     private int checkedPosition = 0; // = -1: no selection
 
-    /*public LocationAdapter(List<Location> locations, LocationListener locationListener) {
+    public LocationAdapter(List<Location> locations, LocationListener locationListener) {
         this.locations = locations;
         this.locationListener = locationListener;
         locationListFull = new ArrayList<>(locations);
 
-    }*/
+    }
 
     public LocationAdapter(Context context, List<Location> locations) {
         this.context = context;
@@ -71,7 +71,9 @@ import nga.uit.edu.mytravel.R;
         return selectedLocation;
     }
 
-   /* @Override
+
+
+    @Override
     public Filter getFilter() {
         return filter;
     }
@@ -104,12 +106,11 @@ import nga.uit.edu.mytravel.R;
             locations.addAll((List) results.values);
             notifyDataSetChanged();
         }
-    };*/
+    };
 
     class LocationViewHolder extends RecyclerView.ViewHolder {
         ConstraintLayout layoutLocation;
         View viewbackground;
-        //RoundedImageView imageLocation;
         TextView textName;
         TextView textDetail;
         ImageView imageSelected;
@@ -120,31 +121,24 @@ import nga.uit.edu.mytravel.R;
             layoutLocation = itemView.findViewById(R.id.layoutLocation);
 
             viewbackground = itemView.findViewById(R.id.viewBackground);
-
-            //imageLocation = itemView.findViewById(R.id.imageLocation);
             textName = itemView.findViewById(R.id.textName);
             textDetail = itemView.findViewById(R.id.textDetail);
             imageSelected = itemView.findViewById(R.id.imageSelected);
         }
 
         void bindLocation(final Location location) {
-            //imageLocation.setImageResource(location.image);
             textName.setText(location.strName);
             textDetail.setText(location.strDetail);
             if (checkedPosition == -1) {
                 viewbackground.setBackgroundResource(R.drawable.location_background);
-                //imageLocation.setBackgroundResource(R.drawable.location_background);
 
                 imageSelected.setVisibility(View.GONE);
             } else {
                 if (checkedPosition == getBindingAdapterPosition()) {
                     viewbackground.setBackgroundResource(R.drawable.location_selected_background);
-                   // imageLocation.setBackgroundResource(R.drawable.location_selected_background);
                     imageSelected.setVisibility(View.VISIBLE);
                 } else {
                     viewbackground.setBackgroundResource(R.drawable.location_background);
-                    //imageLocation.setBackgroundResource(R.drawable.location_background);
-
                     imageSelected.setVisibility(View.GONE);
                 }
             }
@@ -152,7 +146,6 @@ import nga.uit.edu.mytravel.R;
                 @Override
                 public void onClick(View v) {
                     viewbackground.setBackgroundResource(R.drawable.location_selected_background);
-                   // imageLocation.setBackgroundResource(R.drawable.location_selected_background);
                     imageSelected.setVisibility(View.VISIBLE);
                     if (checkedPosition != getBindingAdapterPosition()) {
                         notifyItemChanged(checkedPosition);

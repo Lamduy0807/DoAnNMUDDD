@@ -91,7 +91,7 @@ public class CreateTrip2 extends AppCompatActivity implements LocationListener {
             btAdd.setVisibility(View.VISIBLE);
     }
 
-   /* @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_location, menu);
@@ -113,7 +113,7 @@ public class CreateTrip2 extends AppCompatActivity implements LocationListener {
             }
         });
         return true;
-    }*/
+    }
 
     private void loadData() {
 

@@ -97,14 +97,13 @@ public class DetailPlaceActivity extends AppCompatActivity {
         btnDangTai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(edtDanhGia.getText()==null)
+                if(edtDanhGia.getText().toString().trim().equals(""))
                 {
                     Toast.makeText(DetailPlaceActivity.this,"Hãy chia sẻ trải nghiệm của ban",Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
                     DanhGia danhGia = new DanhGia();
-                    //danhGia.setUid("set cứng");
                     danhGia.setUid(email);
                     danhGia.setTextDanhGia(edtDanhGia.getText().toString());
                     saveDanhGia(danhGia);
@@ -117,7 +116,6 @@ public class DetailPlaceActivity extends AppCompatActivity {
 
     private void saveDanhGia(DanhGia danhGia) {
 
-        //viết hàm lưu đánh giá lên realtime
         database_DanhGia.child(database_DanhGia.push().getKey()).setValue(danhGia);
 
 
