@@ -50,7 +50,7 @@ public class ProfileActivity extends AppCompatActivity {
   private ImageView changePic;
   private FirebaseAuth mAuth;
   private DatabaseReference databaseReference;
-  private Uri imageUri;
+  public static Uri imageUri;
   private String MyUri="";
   private StorageTask uploadTask;
   private StorageReference storageReference;
