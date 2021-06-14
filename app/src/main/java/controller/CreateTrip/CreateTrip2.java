@@ -61,8 +61,8 @@ public class CreateTrip2 extends AppCompatActivity implements LocationListener {
         btAdd.setVisibility(View.VISIBLE);
 
         locationList = new ArrayList<>();
-        loadData();
 
+        loadData();
 
         locationAdapter = new LocationAdapter(CreateTrip2.this,locationList);
         locationsRecyclerView.setAdapter(locationAdapter);
@@ -103,6 +103,7 @@ public class CreateTrip2 extends AppCompatActivity implements LocationListener {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                locationAdapter.getFilter().filter(query);
                 return false;
             }
 

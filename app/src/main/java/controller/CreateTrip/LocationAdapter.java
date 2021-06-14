@@ -20,27 +20,21 @@ import java.util.List;
 
 import nga.uit.edu.mytravel.R;
 
-//public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.LocationViewHolder> implements Filterable {
     public class LocationAdapter extends RecyclerView.Adapter<controller.CreateTrip.LocationAdapter.LocationViewHolder> implements Filterable{
 
     private Context context;
 
     private List<Location> locations;
-
     private List<Location> locationListFull;
+
     private LocationListener locationListener;
     private int checkedPosition = 0; // = -1: no selection
 
-    public LocationAdapter(List<Location> locations, LocationListener locationListener) {
-        this.locations = locations;
-        this.locationListener = locationListener;
-        locationListFull = new ArrayList<>(locations);
-
-    }
 
     public LocationAdapter(Context context, List<Location> locations) {
         this.context = context;
         this.locations = locations;
+        this.locationListFull = locations;
     }
 
     @NonNull
@@ -71,9 +65,47 @@ import nga.uit.edu.mytravel.R;
         return selectedLocation;
     }
 
+    //CODE FILTER NGA FIX
+        @Override
+        public Filter getFilter() {
+            return new Filter() {
+                @Override
+                protected FilterResults performFiltering(CharSequence constraint) {
+                    String strSearch = constraint.toString();
+                    if(strSearch.isEmpty())
+                    {
+                        locations = locationListFull;
+                    }
+                    else
+                    {
+                        List<Location> filteredList = new ArrayList<>();
+                        for (Location item : locationListFull) {
+                            if (item.getStrName().toLowerCase().contains(strSearch.toLowerCase())) {
+                                filteredList.add(item);
+                            }
+                        }
+                        locations=filteredList;
+                    }
+                    FilterResults results = new FilterResults();
+                    results.values = locations;
 
+                    return results;
 
-    @Override
+                }
+
+                @Override
+                protected void publishResults(CharSequence constraint, FilterResults results) {
+                    locations = (List<Location>) results.values;
+                    notifyDataSetChanged();
+
+                }
+            };
+        }
+
+//----------------------------------------------------------------------
+        //CODE CỦA ĐẠI LÚC TRƯỚC
+
+   /* @Override
     public Filter getFilter() {
         return filter;
     }
@@ -106,7 +138,7 @@ import nga.uit.edu.mytravel.R;
             locations.addAll((List) results.values);
             notifyDataSetChanged();
         }
-    };
+    };*/
 
     class LocationViewHolder extends RecyclerView.ViewHolder {
         ConstraintLayout layoutLocation;
