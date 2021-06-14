@@ -10,11 +10,18 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +33,15 @@ public class CreateTrip2 extends AppCompatActivity implements LocationListener {
     private Button btAdd;
     private List<Location> locationList;
 
+    private DatabaseReference mData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_trip_2);
+
+        mData = FirebaseDatabase.getInstance().getReference("Việt Nam");
+
         Toolbar tb = findViewById(R.id.tb);
         setSupportActionBar(tb);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -49,23 +61,10 @@ public class CreateTrip2 extends AppCompatActivity implements LocationListener {
         btAdd.setVisibility(View.VISIBLE);
 
         locationList = new ArrayList<>();
-        locationList.add(new Location(R.drawable.ic_greengps, "Yên Bái", "Yen Bai, Viet Nam"));
-        locationList.add(new Location(R.drawable.ic_greengps, "Vũng Tàu", "Vung Tau, Ba Ria - Vung Tau, Viet Nam,"));
-        locationList.add(new Location(R.drawable.ic_greengps, "Vĩnh Long", "Vinh Long, Viet Nam"));
-        locationList.add(new Location(R.drawable.ic_greengps, "Tuyên Quang", "Tuyen Quang, Viet Nam"));
-        locationList.add(new Location(R.drawable.ic_greengps, "Vinh", "Vinh, Nghe An, Viet Nam"));
-        locationList.add(new Location(R.drawable.ic_greengps, "Nha Trang", "Nha Trang, Khanh Hoa,  Viet Nam"));
-        locationList.add(new Location(R.drawable.ic_greengps, "Sài Gòn", "Sai Gon, Ho Chi Minh, Viet Nam"));
-        locationList.add(new Location(R.drawable.ic_greengps, "Hà Nội", "Ha Noi, Viet Nam"));
-        locationList.add(new Location(R.drawable.ic_greengps, "An Giang", "An Giang, Viet Nam"));
-        locationList.add(new Location(R.drawable.ic_greengps, "Bạc Liêu", "Bac Lieu, Viet Nam"));
-        locationList.add(new Location(R.drawable.ic_greengps, "Bắc Giang", "Bac Giang, Viet Nam"));
-        locationList.add(new Location(R.drawable.ic_greengps, "Cần Thơ", "Can Tho, Viet Nam"));
-        locationList.add(new Location(R.drawable.ic_greengps, "Đắk Lắk", "Dak Lak, Viet Nam"));
-        locationList.add(new Location(R.drawable.ic_greengps, "Đồng Nai", "Dong Nai, Viet Nam"));
 
+        loadData();
 
-        locationAdapter = new LocationAdapter(locationList,this);
+        locationAdapter = new LocationAdapter(CreateTrip2.this,locationList);
         locationsRecyclerView.setAdapter(locationAdapter);
 
         btAdd.setOnClickListener(new View.OnClickListener() {
@@ -73,8 +72,11 @@ public class CreateTrip2 extends AppCompatActivity implements LocationListener {
             public void onClick(View v) {
                 if (locationAdapter.getSelected() !=null) {
                     Toast.makeText(CreateTrip2.this,locationAdapter.getSelected().getStrName(),Toast.LENGTH_SHORT).show();
+
                     Intent intent= new Intent(CreateTrip2.this, Trip6Activity.class);
+                    intent.putExtra("strName",locationAdapter.getSelected().getStrName() );
                     startActivity(intent);
+
                 } else {
                     Toast.makeText(CreateTrip2.this,"No Selection",Toast.LENGTH_SHORT).show();
 
@@ -101,6 +103,7 @@ public class CreateTrip2 extends AppCompatActivity implements LocationListener {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                locationAdapter.getFilter().filter(query);
                 return false;
             }
 
@@ -111,5 +114,26 @@ public class CreateTrip2 extends AppCompatActivity implements LocationListener {
             }
         });
         return true;
+    }
+
+    private void loadData() {
+
+        mData.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Location location = dataSnapshot.getValue(Location.class);
+                    locationList.add(location);
+
+                }
+                locationAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 }

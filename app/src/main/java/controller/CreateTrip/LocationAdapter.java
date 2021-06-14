@@ -1,5 +1,6 @@
     package controller.CreateTrip;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,22 +20,22 @@ import java.util.List;
 
 import nga.uit.edu.mytravel.R;
 
-public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.LocationViewHolder> implements Filterable {
+    public class LocationAdapter extends RecyclerView.Adapter<controller.CreateTrip.LocationAdapter.LocationViewHolder> implements Filterable{
+
+    private Context context;
 
     private List<Location> locations;
     private List<Location> locationListFull;
+
     private LocationListener locationListener;
     private int checkedPosition = 0; // = -1: no selection
 
-    public LocationAdapter(List<Location> locations, LocationListener locationListener) {
+
+    public LocationAdapter(Context context, List<Location> locations) {
+        this.context = context;
         this.locations = locations;
-        this.locationListener = locationListener;
-        locationListFull = new ArrayList<>(locations);
-
+        this.locationListFull = locations;
     }
-
-
-
 
     @NonNull
     @Override
@@ -46,7 +47,7 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
 
     @Override
     public void onBindViewHolder(@NonNull LocationViewHolder holder, int position) {
-        holder.bindLocation(locations.get(position));
+       holder.bindLocation(locations.get(position));
     }
 
     @Override
@@ -64,7 +65,47 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
         return selectedLocation;
     }
 
-    @Override
+    //CODE FILTER NGA FIX
+        @Override
+        public Filter getFilter() {
+            return new Filter() {
+                @Override
+                protected FilterResults performFiltering(CharSequence constraint) {
+                    String strSearch = constraint.toString();
+                    if(strSearch.isEmpty())
+                    {
+                        locations = locationListFull;
+                    }
+                    else
+                    {
+                        List<Location> filteredList = new ArrayList<>();
+                        for (Location item : locationListFull) {
+                            if (item.getStrName().toLowerCase().contains(strSearch.toLowerCase())) {
+                                filteredList.add(item);
+                            }
+                        }
+                        locations=filteredList;
+                    }
+                    FilterResults results = new FilterResults();
+                    results.values = locations;
+
+                    return results;
+
+                }
+
+                @Override
+                protected void publishResults(CharSequence constraint, FilterResults results) {
+                    locations = (List<Location>) results.values;
+                    notifyDataSetChanged();
+
+                }
+            };
+        }
+
+//----------------------------------------------------------------------
+        //CODE CỦA ĐẠI LÚC TRƯỚC
+
+   /* @Override
     public Filter getFilter() {
         return filter;
     }
@@ -97,43 +138,39 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
             locations.addAll((List) results.values);
             notifyDataSetChanged();
         }
-    };
+    };*/
 
     class LocationViewHolder extends RecyclerView.ViewHolder {
         ConstraintLayout layoutLocation;
         View viewbackground;
-        RoundedImageView imageLocation;
-        TextView textName, textDetail;
+        TextView textName;
+        TextView textDetail;
         ImageView imageSelected;
 
         public LocationViewHolder(@NonNull View itemView) {
             super(itemView);
+
             layoutLocation = itemView.findViewById(R.id.layoutLocation);
+
             viewbackground = itemView.findViewById(R.id.viewBackground);
-            imageLocation = itemView.findViewById(R.id.imageLocation);
             textName = itemView.findViewById(R.id.textName);
             textDetail = itemView.findViewById(R.id.textDetail);
             imageSelected = itemView.findViewById(R.id.imageSelected);
         }
 
         void bindLocation(final Location location) {
-            imageLocation.setImageResource(location.image);
             textName.setText(location.strName);
             textDetail.setText(location.strDetail);
             if (checkedPosition == -1) {
                 viewbackground.setBackgroundResource(R.drawable.location_background);
-                imageLocation.setBackgroundResource(R.drawable.location_background);
 
                 imageSelected.setVisibility(View.GONE);
             } else {
                 if (checkedPosition == getBindingAdapterPosition()) {
                     viewbackground.setBackgroundResource(R.drawable.location_selected_background);
-                    imageLocation.setBackgroundResource(R.drawable.location_selected_background);
                     imageSelected.setVisibility(View.VISIBLE);
                 } else {
                     viewbackground.setBackgroundResource(R.drawable.location_background);
-                    imageLocation.setBackgroundResource(R.drawable.location_background);
-
                     imageSelected.setVisibility(View.GONE);
                 }
             }
@@ -141,12 +178,13 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
                 @Override
                 public void onClick(View v) {
                     viewbackground.setBackgroundResource(R.drawable.location_selected_background);
-                    imageLocation.setBackgroundResource(R.drawable.location_selected_background);
                     imageSelected.setVisibility(View.VISIBLE);
                     if (checkedPosition != getBindingAdapterPosition()) {
                         notifyItemChanged(checkedPosition);
                         checkedPosition = getBindingAdapterPosition();
                     }
+
+
                 }
             });
         }

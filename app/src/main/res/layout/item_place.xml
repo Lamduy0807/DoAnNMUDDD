@@ -24,6 +24,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginLeft="4dp"
                 android:layout_marginTop="16dp"
+                android:scaleType="fitXY"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_launcher_background"
@@ -31,15 +32,15 @@
 
             <TextView
                 android:id="@+id/txtAddressPlace"
-                android:layout_width="205dp"
-                android:layout_height="21dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="4dp"
                 android:text="Address"
                 android:textSize="16sp"
                 app:layout_constraintStart_toEndOf="@+id/imgGPS"
-                app:layout_constraintTop_toBottomOf="@+id/txtPlace" />
+                app:layout_constraintTop_toBottomOf="@+id/txtTitlePlace" />
 
             <ImageView
                 android:id="@+id/imgGPS"
@@ -47,16 +48,15 @@
                 android:layout_height="21dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="4dp"
-
+                android:src="@drawable/ic_greengps"
                 app:layout_constraintLeft_toRightOf="@+id/myImageView"
-                app:layout_constraintTop_toBottomOf="@+id/txtPlace"
-                app:srcCompat="@drawable/ic_launcher_foreground"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitlePlace"
                 tools:ignore="VectorDrawableCompat" />
 
             <TextView
-                android:id="@+id/txtPlace"
-                android:layout_width="245dp"
-                android:layout_height="25dp"
+                android:id="@+id/txtTitlePlace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="15dp"
                 android:text="Place"

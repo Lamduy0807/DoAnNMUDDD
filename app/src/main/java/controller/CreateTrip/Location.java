@@ -1,6 +1,7 @@
 package controller.CreateTrip;
 
-public class Location {String strName, strDetail;
+public class Location {
+    String strName, strDetail;
     int image;
     Boolean isSelected = false;
 
@@ -8,6 +9,13 @@ public class Location {String strName, strDetail;
         this.strName = strName;
         this.strDetail = strDetail;
         this.image = image;
+    }
+
+    public Location() {
+    }
+
+    public Location(String strName) {
+        this.strName = strName;
     }
 
     public String getStrName() {
