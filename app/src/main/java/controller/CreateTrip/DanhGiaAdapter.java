@@ -49,16 +49,18 @@ public class DanhGiaAdapter extends RecyclerView.Adapter<DanhGiaAdapter.DanhGiaV
 
     @Override
     public void onBindViewHolder(@NonNull DanhGiaViewHolder holder, int position) {
+
         DanhGia danhGia = danhGiaList.get(position);
-        holder.txtUid.setText(danhGia.getUid());
+
+        holder.txtUid.setText(danhGia.getEmail());
         holder.txtDanhGia.setText(danhGia.getTextDanhGia());
         mAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
-        getUserInfo(holder);
+        getUserInfo(holder, danhGia);
 
     }
-    private void getUserInfo(@NonNull DanhGiaViewHolder holder) {
-        databaseReference.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+    private void getUserInfo(@NonNull DanhGiaViewHolder holder, DanhGia danhGia) {
+        databaseReference.child(danhGia.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 if(snapshot.exists()&& snapshot.getChildrenCount()>0){

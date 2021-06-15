@@ -1,6 +1,7 @@
 package controller.mytravel;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,6 +41,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import controller.CreateTrip.CreateTrip1;
+import controller.CreateTrip.CreateTrip2;
+import controller.CreateTrip.Location;
+import controller.CreateTrip.Place;
+import controller.CreateTrip.Trip6Activity;
 import controller.minh.ProfileActivity;
 import nga.uit.edu.mytravel.R;
 
@@ -47,7 +53,7 @@ public class HomeScreen extends AppCompatActivity {
     private ViewPager2 viewPager3;
     private Handler slideHandler = new Handler();
     private BottomNavigationView bottomNavigationView ;
-    private DatabaseReference databaseReference;
+    private DatabaseReference databaseReference,data;
 
     private SearchView searchView;
     private ListView LocationList;
@@ -137,27 +143,33 @@ public class HomeScreen extends AppCompatActivity {
         searchView = findViewById(R.id.searchview);
         LocationList = findViewById(R.id.locationList);
         List = new ArrayList<>();
-        List.add("Yen Bai");
-        List.add("Vung Tau");
-        List.add("Vinh Long");
-        List.add("Tuyen Quang");
-        List.add("Vinh");
-        List.add("Nha Trang");
-        List.add("Sai Gon");
-        List.add("Ha Noi");
-        List.add("An Giang");
-        List.add("Bac Lieu");
-        List.add("Bac Giang");
-        List.add("Dak Lak");
-        List.add("Dong Nai");
-        List.add("Can Tho");
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,List);
+        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,List);
         LocationList.setAdapter(adapter);
+        data = FirebaseDatabase.getInstance().getReference("Việt Nam");
+        data.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Location location = dataSnapshot.getValue(Location.class);
+                    List.add(location.getStrName());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
         LocationList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String select = LocationList.getItemAtPosition(position).toString();
                 Toast.makeText(HomeScreen.this,""+select,Toast.LENGTH_SHORT).show();
+                Intent intent= new Intent(HomeScreen.this, Trip6Activity.class);
+                intent.putExtra("strName",LocationList.getItemAtPosition(position).toString() );
+                startActivity(intent);
 
             }
         });

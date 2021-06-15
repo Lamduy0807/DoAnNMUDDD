@@ -41,6 +41,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="50dp"
+            android:paddingTop="15dp"
+            android:layout_marginLeft="10dp"
             android:text="List of places"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -48,21 +50,14 @@
             tools:layout_editor_absoluteX="37dp"
             tools:layout_editor_absoluteY="459dp" />
 
-        <EditText
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:textSize="18sp"
-            android:textStyle="normal"
-            tools:layout_editor_absoluteX="125dp"
-            tools:layout_editor_absoluteY="603dp" />
+        <SearchView
+            android:id="@+id/searchPlace"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:iconifiedByDefault="false"
+            android:queryHint="What are you looking for?">
 
-
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/ic_search"
-            tools:layout_editor_absoluteX="266dp"
-            tools:layout_editor_absoluteY="409dp" />
+        </SearchView>
 
     </LinearLayout>
 
