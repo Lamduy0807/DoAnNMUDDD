@@ -17,6 +17,7 @@ import android.view.View;
 
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -31,17 +32,16 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.annotations.NotNull;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
-
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import controller.CreateTrip.CreateTrip1;
 import controller.CreateTrip.CreateTrip2;
+import controller.CreateTrip.DetailPlaceActivity;
 import controller.CreateTrip.Location;
 import controller.CreateTrip.Place;
 import controller.CreateTrip.Trip6Activity;
@@ -64,9 +64,11 @@ public class HomeScreen extends AppCompatActivity {
     String title, location, imgURL;
     float starRate;
     ImgSlideAdapter imgSlideAdapter;
+    FrameLayout f1, f2, f3;
     String titleimg;
     String titleDiscovery, urlimgDiscovery;
-
+    String t1,t2,t3;
+    String p1,p2,p3;
     TextView tv1, tv2, tv3;
     RoundedImageView im1,im2,im3;
     List<TravelLocation> travelLocationList = new ArrayList<>();
@@ -84,6 +86,9 @@ public class HomeScreen extends AppCompatActivity {
         im2 = findViewById(R.id.imgDiscovery2);
         tv3 = findViewById(R.id.tvDiscovery3);
         im3 = findViewById(R.id.imgDiscovery3);
+        f1 = findViewById(R.id.f1);
+        f2 = findViewById(R.id.f2);
+        f3 = findViewById(R.id.f3);
         firebaseAuth = FirebaseAuth.getInstance();
         SetBottomNavigationBar();
         SetImgSlide();
@@ -96,44 +101,78 @@ public class HomeScreen extends AppCompatActivity {
     }
 
     private void SetDiscovery() {
+
         databaseReference = FirebaseDatabase.getInstance().getReference().child("ImgDiscovery");
         databaseReference.child("1").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    titleDiscovery = snapshot.child("title").getValue().toString();
+                    titleDiscovery = snapshot.child("title").getValue().toString()+ " - " +snapshot.child("place").getValue().toString();
                     tv1.setText(titleDiscovery);
                     Picasso.get().load(snapshot.child("url").getValue().toString()).into(im1);
+                    p1 = snapshot.child("title").getValue().toString();
+                    t1 = snapshot.child("place").getValue().toString();
                 }
             }
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
+            }
+        });
+        f1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(HomeScreen.this, DetailPlaceActivity.class);
+                intent.putExtra("title", p1);
+                intent.putExtra("strName",t1 );
+                startActivity(intent);
             }
         });
         databaseReference.child("2").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    titleDiscovery = snapshot.child("title").getValue().toString();
+                    titleDiscovery = snapshot.child("title").getValue().toString()+ " - " +snapshot.child("place").getValue().toString();
                     tv2.setText(titleDiscovery);
                     Picasso.get().load(snapshot.child("url").getValue().toString()).into(im2);
+                    p2 = snapshot.child("title").getValue().toString();
+                    t2 = snapshot.child("place").getValue().toString();
                 }
             }
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
             }
         });
+        f2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(HomeScreen.this, DetailPlaceActivity.class);
+                intent.putExtra("title", p2);
+                intent.putExtra("strName",t2 );
+                startActivity(intent);
+            }
+        });
         databaseReference.child("3").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    titleDiscovery = snapshot.child("title").getValue().toString();
+                    titleDiscovery =snapshot.child("title").getValue().toString()+ " - " +snapshot.child("place").getValue().toString();
                     tv3.setText(titleDiscovery);
                     Picasso.get().load(snapshot.child("url").getValue().toString()).into(im3);
+                    p3 = snapshot.child("title").getValue().toString();
+                    t3 = snapshot.child("place").getValue().toString();
                 }
             }
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
+            }
+        });
+        f3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(HomeScreen.this, DetailPlaceActivity.class);
+                intent.putExtra("title", p3);
+                intent.putExtra("strName",t3 );
+                startActivity(intent);
             }
         });
     }

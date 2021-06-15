@@ -29,7 +29,8 @@
             android:value="@string/map_key" />
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat"/>
-        <activity android:name="controller.CreateTrip.DetailPlaceActivity" />
+        <activity android:name="controller.CreateTrip.DetailPlaceActivity"
+            android:parentActivityName="controller.CreateTrip.Trip6Activity"/>
         <activity android:name="controller.CreateTrip.Trip6Activity"
             android:parentActivityName="controller.CreateTrip.CreateTrip2"/>
 

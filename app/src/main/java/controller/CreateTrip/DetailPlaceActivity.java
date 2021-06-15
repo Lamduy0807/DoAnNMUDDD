@@ -3,6 +3,7 @@
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -80,7 +81,15 @@ public class DetailPlaceActivity extends AppCompatActivity {
         addControls();
         addEvents();
         getData();
-
+        Toolbar tb = findViewById(R.id.tb);
+        setSupportActionBar(tb);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        tb.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         firestore = FirebaseFirestore.getInstance();
         mData =  FirebaseDatabase.getInstance().getReference().child("Place").child(mpath).child(mtitle);
         database_DanhGia = FirebaseDatabase.getInstance().getReference().child("Đánh Giá").child("Place").child(mpath).child(mtitle);
