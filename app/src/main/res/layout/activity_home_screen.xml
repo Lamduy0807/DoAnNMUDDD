@@ -177,6 +177,7 @@
                         android:orientation="horizontal">
 
                         <FrameLayout
+                            android:id="@+id/f1"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginRight="15dp"
@@ -207,6 +208,7 @@
                         </FrameLayout>
 
                         <FrameLayout
+                            android:id="@+id/f2"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginRight="15dp"
@@ -237,6 +239,7 @@
                         </FrameLayout>
 
                         <FrameLayout
+                            android:id="@+id/f3"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:elevation="@dimen/_8sdp">
