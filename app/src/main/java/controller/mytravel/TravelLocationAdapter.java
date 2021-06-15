@@ -1,5 +1,7 @@
 package controller.mytravel;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +15,17 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import controller.CreateTrip.Trip6Activity;
 import nga.uit.edu.mytravel.R;
 
 public class TravelLocationAdapter extends RecyclerView.Adapter<TravelLocationAdapter.TravelLocationViewHolder> {
 
     private List<TravelLocation> travelLocations;
+    private Context context;
 
-    public TravelLocationAdapter(List<TravelLocation> travelLocations) {
+    public TravelLocationAdapter(Context context,List<TravelLocation> travelLocations) {
         this.travelLocations = travelLocations;
+        this.context = context;
     }
 
     @NonNull
@@ -37,6 +42,14 @@ public class TravelLocationAdapter extends RecyclerView.Adapter<TravelLocationAd
     @Override
     public void onBindViewHolder(@NonNull TravelLocationViewHolder holder, int position) {
         holder.setLocationData(travelLocations.get(position));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(context, Trip6Activity.class);
+                intent.putExtra("strName",holder.tvLocation.getText().toString());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

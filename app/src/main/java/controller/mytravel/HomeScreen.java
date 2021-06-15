@@ -322,7 +322,7 @@ public class HomeScreen extends AppCompatActivity {
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("TravelLocation");
 
-        travelLocationAdapter = new TravelLocationAdapter(travelLocationList);
+        travelLocationAdapter = new TravelLocationAdapter(this,travelLocationList);
         databaseReference.child("1").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
