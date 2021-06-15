@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -39,6 +42,7 @@ public class Trip6Activity extends AppCompatActivity implements OnMapReadyCallba
     private RecyclerView recyclerView;
     private List<Place> mList;
     private PlaceAdapter placeAdapter;
+    private SearchView searchView;
 
     private DatabaseReference mRef;
 
@@ -57,6 +61,7 @@ public class Trip6Activity extends AppCompatActivity implements OnMapReadyCallba
         addControls();
 
         loadData();
+        searchPlace();
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
         .findFragmentById(R.id.map);
@@ -96,6 +101,8 @@ public class Trip6Activity extends AppCompatActivity implements OnMapReadyCallba
     private void addControls() {
 
         recyclerView= this.<RecyclerView>findViewById(R.id.recyclerView);
+        searchView = findViewById(R.id.searchPlace);
+
         mList =new ArrayList<>();
         placeAdapter=new PlaceAdapter(Trip6Activity.this,mList);
 
@@ -103,6 +110,22 @@ public class Trip6Activity extends AppCompatActivity implements OnMapReadyCallba
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
+    }
+
+    private void searchPlace() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                placeAdapter.getFilter().filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                placeAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
     }
 
 
@@ -114,35 +137,33 @@ public class Trip6Activity extends AppCompatActivity implements OnMapReadyCallba
         map.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
             @Override
             public void onMapLoaded() {
-                int i=0;
-                List<LatLng> loc = new ArrayList<>();
-                for(Place pplace : mList)
-                {
-                    loc.add(new LatLng(pplace.getViDo(),pplace.getKinhDo()));
-                }
 
-                for (LatLng latLng : loc)
-                {
-                    map.addMarker(new MarkerOptions()
-                            .position(latLng)
-                            .title(mList.get(i).getTitle()));
-                    i++;
+                    int i = 0;
+                    List<LatLng> loc = new ArrayList<>();
+                    for (Place pplace : mList) {
+                        loc.add(new LatLng(pplace.getViDo(), pplace.getKinhDo()));
+                    }
 
-                }
-                LatLngBounds.Builder builder = new LatLngBounds.Builder();
-                builder.include(loc.get(0)); //điểm A
-                builder.include(loc.get(loc.size() - 1)); //điểm B
-                LatLngBounds bounds = builder.build();
-                CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, 200);
-                map.moveCamera(cu);
-                map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+                    for (LatLng latLng : loc) {
+                        map.addMarker(new MarkerOptions()
+                                .position(latLng)
+                                .title(mList.get(i).getTitle()));
+                        i++;
+
+                    }
+                    LatLngBounds.Builder builder = new LatLngBounds.Builder();
+                    builder.include(loc.get(0)); //điểm A
+                    builder.include(loc.get(loc.size() - 1)); //điểm B
+                    LatLngBounds bounds = builder.build();
+                    CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, 200);
+                    map.moveCamera(cu);
+                    map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
 
 
             }
         });
 
-
-
-
     }
+
+
 }

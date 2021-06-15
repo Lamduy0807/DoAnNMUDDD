@@ -84,11 +84,14 @@
                     </SearchView>
 
                     <ListView
+                        android:id="@+id/locationList"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:visibility="gone"
                         android:layout_marginTop="10dp"
-                        android:id="@+id/locationList"/>
+                        android:isScrollContainer="false"
+                        android:saveEnabled="false"
+                        android:smoothScrollbar="true"
+                        android:visibility="gone" />
 
                 </LinearLayout>
 

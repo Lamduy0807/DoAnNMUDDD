@@ -3,6 +3,7 @@
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -64,7 +65,8 @@ public class DetailPlaceActivity extends AppCompatActivity {
     private List<DanhGia> mDanhGia;
     private DanhGiaAdapter danhGiaAdapter;
 
-    String email;
+    String uid, email;
+
 
 
     @Override
@@ -72,7 +74,8 @@ public class DetailPlaceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_place);
         FirebaseUser firebaseUser = auth.getCurrentUser();
-        email=firebaseUser.getEmail();
+        uid=firebaseUser.getUid();
+        email = firebaseUser.getEmail();
 
         addControls();
         addEvents();
@@ -121,7 +124,8 @@ public class DetailPlaceActivity extends AppCompatActivity {
                 {
 
                     Map<String, Object> taskMap = new HashMap<>();
-                    taskMap.put("uid",email);
+                    taskMap.put("uid",uid);
+                    taskMap.put("email", email);
                     taskMap.put("textDanhGia",edtDanhGia.getText().toString());
                     saveDataDanhGia(taskMap);
 
@@ -171,6 +175,8 @@ public class DetailPlaceActivity extends AppCompatActivity {
         recyclerView_DanhGia.setAdapter(danhGiaAdapter);
         recyclerView_DanhGia.setLayoutManager(new LinearLayoutManager(this));
         recyclerView_DanhGia.setHasFixedSize(true);
+        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this,DividerItemDecoration.VERTICAL);
+        recyclerView_DanhGia.addItemDecoration(itemDecoration);
 
 
 
