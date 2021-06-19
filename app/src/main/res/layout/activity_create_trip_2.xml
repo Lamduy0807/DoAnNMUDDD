@@ -38,14 +38,22 @@
         android:id="@+id/btAddToList"
         android:layout_width="match_parent"
         android:layout_height="43dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/button_botron"
-        android:text="Add"
+        android:text="Choose"
+
         android:textAllCaps="false"
         android:textColor="@color/colorTextIcons"
         android:textSize="15sp"
         android:visibility="gone"
         app:backgroundTint="@color/dgreen"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 
