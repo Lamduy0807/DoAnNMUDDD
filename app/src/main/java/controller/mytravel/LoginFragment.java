@@ -26,8 +26,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
+import controller.minh.AdminScreenActivity;
 import nga.uit.edu.mytravel.R;
 
 public class LoginFragment extends Fragment {
@@ -36,6 +43,11 @@ public class LoginFragment extends Fragment {
     float v = 0;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     ExtendedFloatingActionButton btn;
+
+    ///Phân Quyền
+    String strUID="";
+    private DatabaseReference mData;
+    public  String permission = "";
 
 
     @Override
@@ -107,6 +119,38 @@ public class LoginFragment extends Fragment {
         });
         dialog.show();
     }
+    private void checkUserPermission(FirebaseUser user)
+    {
+        mData = FirebaseDatabase.getInstance().getReference("Users");
+
+        strUID = user.getUid();
+        mData.child(strUID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User mUser = snapshot.getValue(User.class);
+                if(mUser!=null) {
+                    permission = mUser.getPermission();
+
+                }
+                if(permission.equals("admin"))
+                {
+                    startActivity(new Intent(getContext(), AdminScreenActivity.class));
+
+                }
+                else {
+                    startActivity(new Intent(getContext(), HomeScreen.class));
+                }
+
+
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 
     private void login() {
         if(!validateEmail()||!validatePass())
@@ -121,8 +165,10 @@ public class LoginFragment extends Fragment {
 
                     if (task.isSuccessful()) {
                         Log.d("test", "success");
-                        Toast.makeText(getActivity(), "Logining...", Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(getContext(), HomeScreen.class));
+                        /*Toast.makeText(getActivity(), "Logining...", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(getContext(), HomeScreen.class));*/
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        checkUserPermission(user);
                     }
                     else
                     {

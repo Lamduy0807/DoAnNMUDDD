@@ -45,6 +45,7 @@ import controller.CreateTrip.DetailPlaceActivity;
 import controller.CreateTrip.Location;
 import controller.CreateTrip.Place;
 import controller.CreateTrip.Trip6Activity;
+import controller.minh.AdminScreenActivity;
 import controller.minh.ProfileActivity;
 import nga.uit.edu.mytravel.R;
 
@@ -53,7 +54,10 @@ public class HomeScreen extends AppCompatActivity {
     private ViewPager2 viewPager3;
     private Handler slideHandler = new Handler();
     private BottomNavigationView bottomNavigationView ;
-    private DatabaseReference databaseReference,data;
+    private DatabaseReference databaseReference,data,mData;
+    private String strUID;
+    private  String permission = "";
+
 
     private SearchView searchView;
     private ListView LocationList;
@@ -435,10 +439,46 @@ public class HomeScreen extends AppCompatActivity {
         viewPager2.setPageTransformer(compositePageTransformer);
     }
 
+    private void checkUserPermission(FirebaseUser user)
+    {
+        mData = FirebaseDatabase.getInstance().getReference("Users");
+
+        strUID = user.getUid();
+        mData.child(strUID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User mUser = snapshot.getValue(User.class);
+                if(mUser!=null) {
+                    permission = mUser.getPermission();
+
+                }
+                if(permission.equals("admin"))
+                {
+                    startActivity(new Intent(HomeScreen.this, AdminScreenActivity.class));
+
+                }
+                else {
+                    //startActivity(new Intent(getContext(), HomeScreen.class));
+                }
+
+
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
 
     private void checkUserStatus() {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if (user != null) {
+            checkUserPermission(user );
+
+
 
         } else {
             startActivity( new Intent(HomeScreen.this, MainActivity.class));
@@ -446,6 +486,8 @@ public class HomeScreen extends AppCompatActivity {
         }
 
     }
+
+
 
     @Override
     public void onStart() {
