@@ -186,6 +186,7 @@ public class DetailPlaceActivity extends AppCompatActivity {
         recyclerView_DanhGia.setHasFixedSize(true);
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this,DividerItemDecoration.VERTICAL);
         recyclerView_DanhGia.addItemDecoration(itemDecoration);
+        recyclerView_DanhGia.setNestedScrollingEnabled(false);
 
 
 

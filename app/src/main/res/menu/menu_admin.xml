@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home_admin"
+            android:title="Home"
+            android:icon="@drawable/ic_baseline_home_24"/>
+        <item
+            android:id="@+id/nav_place_admin"
+            android:title="Place"
+            android:icon="@drawable/ic_baseline_place_24"/>
+        <item
+            android:id="@+id/nav_managerAcc_admin"
+            android:title="Manager Account"
+            android:icon="@drawable/ic_baseline_manage_accounts_24"/>
+
+
+
+    </group>
+
+        <item
+            android:title="Profile">
+            <menu>
+                <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_profile_admin"
+                    android:title="Profile"
+                    android:icon="@drawable/ic_person"/>
+                <item
+                    android:id="@+id/nav_logout_admin"
+                    android:title="Logout"
+                    android:icon="@drawable/ic_baseline_logout_24"/>
+                </group>
+            </menu>
+
+        </item>
+
+
+</menu>

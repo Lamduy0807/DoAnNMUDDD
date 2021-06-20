@@ -2,6 +2,7 @@ package controller.mytravel;
 
 public class User {
     private String Name ,Email, PassWord, Phone, UserName;
+    private String Permission;
 
     public User() {
     }
@@ -52,5 +53,22 @@ public class User {
         PassWord = passWord;
         Phone = phone;
         UserName = userName;
+    }
+
+    public String getPermission() {
+        return Permission;
+    }
+
+    public void setPermission(String permission) {
+        Permission = permission;
+    }
+
+    public User(String name, String email, String passWord, String phone, String userName, String permission) {
+        Name = name;
+        Email = email;
+        PassWord = passWord;
+        Phone = phone;
+        UserName = userName;
+        Permission = permission;
     }
 }

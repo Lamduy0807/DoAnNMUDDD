@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.SearchView;
@@ -24,6 +26,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,6 +39,10 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.List;
 
+import controller.minh.AdminAddPlaceActivity;
+import controller.minh.AdminScreenActivity;
+import controller.mytravel.HomeScreen;
+import controller.mytravel.User;
 import nga.uit.edu.mytravel.R;
 
 public class Trip6Activity extends AppCompatActivity implements OnMapReadyCallback{
@@ -43,10 +51,15 @@ public class Trip6Activity extends AppCompatActivity implements OnMapReadyCallba
     private List<Place> mList;
     private PlaceAdapter placeAdapter;
     private SearchView searchView;
-
     private DatabaseReference mRef;
-
     public static String path="";
+
+    ///admin
+    Button btnAddPlace;
+    String strUID="";
+    private DatabaseReference mData;
+    public  String permission = "";
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +86,56 @@ public class Trip6Activity extends AppCompatActivity implements OnMapReadyCallba
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
+        //admin
+        btnAddPlace = findViewById(R.id.btnAddPlace);
+        FirebaseUser user = mAuth.getCurrentUser();
+        checkUserPermission(user);
+        btnAddPlace.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Trip6Activity.this, AdminAddPlaceActivity.class);
+                intent.putExtra("name_province",path);
+                startActivity(intent);
+                finish();
+            }
+        });
 
+
+
+
+    }
+    private void checkUserPermission(FirebaseUser user)
+    {
+        mData = FirebaseDatabase.getInstance().getReference("Users");
+
+        strUID = user.getUid();
+        mData.child(strUID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User mUser = snapshot.getValue(User.class);
+                if(mUser!=null) {
+                    permission = mUser.getPermission();
+                }
+
+
+                if(permission.equals("admin"))
+                {
+                    btnAddPlace.setVisibility(View.VISIBLE);
+
+                }
+                else {
+                    btnAddPlace.setVisibility(View.INVISIBLE);
+                }
+
+
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void loadData() {
@@ -133,10 +195,10 @@ public class Trip6Activity extends AppCompatActivity implements OnMapReadyCallba
     public void onMapReady(@NonNull GoogleMap googleMap) {
         map = googleMap;
 
-
         map.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
             @Override
             public void onMapLoaded() {
+
 
                     int i = 0;
                     List<LatLng> loc = new ArrayList<>();
@@ -160,8 +222,10 @@ public class Trip6Activity extends AppCompatActivity implements OnMapReadyCallba
                     map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
 
 
+
             }
         });
+
 
     }
 

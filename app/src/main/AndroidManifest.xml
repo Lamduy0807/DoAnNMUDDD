@@ -9,50 +9,52 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyTravel">
-
-        <activity android:name="controller.mytravel.LoginScreen"></activity>
+        android:theme="@style/Theme.MyTravel"
+        android:usesCleartextTraffic="true">
+        <activity android:name="controller.minh.AdminAddPlaceActivity"></activity>
+        <activity android:name="controller.minh.AdminScreenActivity" />
+        <activity android:name="controller.mytravel.LoginScreen" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_key" />
-        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat"/>
-        <activity android:name="controller.CreateTrip.DetailPlaceActivity"
-            android:parentActivityName="controller.CreateTrip.Trip6Activity"/>
-        <activity android:name="controller.CreateTrip.Trip6Activity"
-            android:parentActivityName="controller.CreateTrip.CreateTrip2"/>
 
-        <activity android:name="controller.mytravel.HomeScreen" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+        <activity
+            android:name="controller.CreateTrip.DetailPlaceActivity"
+            android:parentActivityName="controller.CreateTrip.Trip6Activity" />
+        <activity
+            android:name="controller.CreateTrip.Trip6Activity"
+            android:parentActivityName="controller.CreateTrip.CreateTrip2" />
+        <activity android:name="controller.mytravel.HomeScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name="controller.minh.ProfileActivity" />
-        <activity android:name="controller.minh.ChangePasswordActivity"
-            android:parentActivityName="controller.minh.ProfileActivity"/>
+        <activity
+            android:name="controller.minh.ChangePasswordActivity"
+            android:parentActivityName="controller.minh.ProfileActivity" />
         <activity android:name="controller.mytravel.RegisterActivity" />
         <activity android:name="controller.mytravel.LoginActivity" />
         <activity android:name="controller.CreateTrip.CreateTrip1" />
-        <activity android:name="controller.CreateTrip.CreateTrip2"
-            android:parentActivityName="controller.CreateTrip.CreateTrip1"/>
-        <activity android:name="controller.mytravel.MainActivity">
-
-        </activity>
+        <activity
+            android:name="controller.CreateTrip.CreateTrip2"
+            android:parentActivityName="controller.CreateTrip.CreateTrip1" />
+        <activity android:name="controller.mytravel.MainActivity" />
     </application>
 
 </manifest>
