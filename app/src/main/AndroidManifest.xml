@@ -48,8 +48,6 @@
         <activity
             android:name="controller.minh.ChangePasswordActivity"
             android:parentActivityName="controller.minh.ProfileActivity" />
-        <activity android:name="controller.mytravel.RegisterActivity" />
-        <activity android:name="controller.mytravel.LoginActivity" />
         <activity android:name="controller.CreateTrip.CreateTrip1" />
         <activity
             android:name="controller.CreateTrip.CreateTrip2"

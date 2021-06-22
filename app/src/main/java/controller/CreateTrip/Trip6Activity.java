@@ -26,6 +26,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -55,7 +56,7 @@ public class Trip6Activity extends AppCompatActivity implements OnMapReadyCallba
     public static String path="";
 
     ///admin
-    Button btnAddPlace;
+    FloatingActionButton btnAddPlace;
     String strUID="";
     private DatabaseReference mData;
     public  String permission = "";
