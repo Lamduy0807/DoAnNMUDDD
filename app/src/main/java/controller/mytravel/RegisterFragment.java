@@ -22,18 +22,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import nga.uit.edu.mytravel.R;
 
 public class RegisterFragment extends Fragment {
-    EditText etMail, etPW, etPhone, etRPW;
+    EditText etMail, etPW, etRPW;
     float v = 0;
     ExtendedFloatingActionButton btnRe;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     CircularProgressIndicator progressIndicator;
+    private String PERMISION = "user";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater .inflate(R.layout.register_tab,container,false);
         etMail = root.findViewById(R.id.rEmail);
-        etPhone = root.findViewById(R.id.Phone);
         etPW = root.findViewById(R.id.rPW);
         etRPW = root.findViewById(R.id.rePW);
         btnRe = root.findViewById(R.id.btnRegister);
@@ -48,17 +48,16 @@ public class RegisterFragment extends Fragment {
     }
 
     private void createuser() {
-        if(!validatePhone()||!validateEmail()||!validatePass()||!validateRePass())
+        if(!validateEmail()||!validatePass()||!validateRePass())
             return;
         else {
             String email = etMail.getText().toString().trim();
             String PW = etPW.getText().toString().trim();
-            String phone = etPhone.getText().toString().trim();
             mAuth.createUserWithEmailAndPassword(email, PW).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-                        SavePhoneNum(mAuth.getUid(), phone);
+                        Saveuser(mAuth.getUid(),PERMISION);
                         Toast.makeText(getContext(), "User register successfully!", Toast.LENGTH_LONG).show();
                     }
                     else {
@@ -109,24 +108,7 @@ public class RegisterFragment extends Fragment {
             return true;
         }
     }
-    private Boolean validatePhone()
-    {
 
-        String phone = etPhone.getText().toString();
-        if(phone.isEmpty())
-        {
-            etPhone.setError("Field can not be empty!");
-            return false;
-        }
-        else if(phone.length()!=10){
-            etPhone.setError("invalid phone number");
-            return false;
-        }
-        else{
-            etPhone.setError(null);
-            return true;
-        }
-    }
     private Boolean validateRePass() {
 
         String RPass = etRPW.getText().toString();
@@ -141,26 +123,24 @@ public class RegisterFragment extends Fragment {
             return true;
         }
     }
-    private void SavePhoneNum(String uid, String phone) {
+    private void Saveuser(String uid, String permission) {
+
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Users");
-        PhoneNum phoneNum = new PhoneNum(uid,phone);
-        databaseReference.child(uid).setValue(phoneNum);
+        User user = new User(permission);
+        databaseReference.child(uid).setValue(user);
     }
     public void setanimation()
     {
         etMail.setTranslationX(800);
-        etPhone.setTranslationX(800);
         etPW.setTranslationX(800);
         etRPW.setTranslationX(800);
 
         etMail.setAlpha(v);
-        etPhone.setAlpha(v);
         etPW.setAlpha(v);
         etRPW.setAlpha(v);
 
         etMail.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
-        etPhone.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
         etPW.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
         etRPW.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
     }

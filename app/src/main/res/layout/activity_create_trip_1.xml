@@ -56,10 +56,11 @@
 
         <Button
             android:id="@+id/btnChooseLocation"
-            android:layout_width="375dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/button_botron"
             android:text="Choose"
             android:textColor="#070707"
