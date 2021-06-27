@@ -137,6 +137,7 @@ public class DetailPlaceActivity extends AppCompatActivity {
                     taskMap.put("email", email);
                     taskMap.put("textDanhGia",edtDanhGia.getText().toString());
                     saveDataDanhGia(taskMap);
+                    edtDanhGia.setText("");
 
                 }
             }

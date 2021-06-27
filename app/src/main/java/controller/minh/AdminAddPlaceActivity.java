@@ -122,36 +122,40 @@ public class AdminAddPlaceActivity extends AppCompatActivity {
         btnSavePlace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*if(edt_title.getText().equals("") || edt_address.getText().equals("") || edt_description.toString().equals("")
-                || edt_latitude.getText().equals("")||edt_longitude.getText().equals("") ) {
-                    Toast.makeText(AdminAddPlaceActivity.this, "Pleas enter info", Toast.LENGTH_SHORT).show();
+                if(edt_title.getText().toString().isEmpty()) {
+                    Toast.makeText(AdminAddPlaceActivity.this, "Please enter title", Toast.LENGTH_SHORT).show();
+                    edt_title.requestFocus();
                 }
-                else {*/
-                    if (imageUri != null) {
-                        saveToFirebase(imageUri);
-
-                    } else {
-
-                        Toast.makeText(AdminAddPlaceActivity.this, "Please select image", Toast.LENGTH_SHORT).show();
-                    }
-                //}
-
-                /*if(edt_title.getText()!=null && edt_address.getText() !=null
-                        && edt_description.getText() !=null && edt_latitude.getText() !=null
-                        && edt_longitude.getText() !=null    ) {
-
-                    if (imageUri != null) {
-                        saveToFirebase(imageUri);
-
-                    } else {
-
-                        Toast.makeText(AdminAddPlaceActivity.this, "Please select image", Toast.LENGTH_SHORT).show();
-                    }
+                else if (edt_address.getText().toString().isEmpty() )
+                {
+                    Toast.makeText(AdminAddPlaceActivity.this, "Please enter address", Toast.LENGTH_SHORT).show();
+                    edt_address.requestFocus();
+                }
+                else if (edt_description.getText().toString().isEmpty())
+                {
+                    Toast.makeText(AdminAddPlaceActivity.this, "Please enter description", Toast.LENGTH_SHORT).show();
+                    edt_description.requestFocus();
+                }
+                else if (edt_latitude.getText().toString().isEmpty())
+                {
+                    Toast.makeText(AdminAddPlaceActivity.this, "Please enter latitude", Toast.LENGTH_SHORT).show();
+                    edt_latitude.requestFocus();
+                }
+                else if (edt_longitude.getText().toString().isEmpty())
+                {
+                    Toast.makeText(AdminAddPlaceActivity.this, "Please enter longitude" , Toast.LENGTH_SHORT).show();
+                    edt_longitude.requestFocus();
                 }
                 else {
-                    Toast.makeText(AdminAddPlaceActivity.this, "Please enter full infomation", Toast.LENGTH_SHORT).show();
+                    if (imageUri != null) {
+                        saveToFirebase(imageUri);
 
-                }*/
+                    } else {
+
+                        Toast.makeText(AdminAddPlaceActivity.this, "Please select image", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
 
         }});
 
