@@ -44,6 +44,7 @@ public class AdminScreenActivity extends AppCompatActivity implements Navigation
             public void onClick(View v) {
                 Intent intent = new Intent(AdminScreenActivity.this, CreateTrip2.class);
                 startActivity(intent);
+                //finish();
             }
         });
 
@@ -76,16 +77,19 @@ public class AdminScreenActivity extends AppCompatActivity implements Navigation
             case R.id.nav_place_admin:
                 Intent intent = new Intent(AdminScreenActivity.this, CreateTrip2.class);
                 startActivity(intent);
+                //finish();
+                break;
             case  R.id.nav_managerAcc_admin:
                 Toast.makeText(AdminScreenActivity.this,"Manager Account Activity",Toast.LENGTH_SHORT).show();
+                break;
             case  R.id.nav_profile_admin:
                 Toast.makeText(AdminScreenActivity.this,"Chưa làm PROFILE ADMIN",Toast.LENGTH_SHORT).show();
-
-
+                break;
             case  R.id.nav_logout_admin:
                 mAuth.signOut();
                 signOutUser();
-                //Toast.makeText(AdminScreenActivity.this,"Chưa làm LOGOUT ADMIN",Toast.LENGTH_SHORT).show();
+                break;
+
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

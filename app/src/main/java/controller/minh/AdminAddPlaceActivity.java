@@ -241,4 +241,14 @@ public class AdminAddPlaceActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(AdminAddPlaceActivity.this, Trip6Activity.class);
+        intent.putExtra("strName",tv_select_province.getText().toString());
+        startActivity(intent);
+        finish();
+
+    }
 }
