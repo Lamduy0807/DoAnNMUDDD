@@ -195,7 +195,7 @@ public class LoginFragment extends Fragment {
                                 break;
 
                             case "ERROR_WRONG_PASSWORD":
-                                Toast.makeText(getContext(), "The password is invalid or the user does not have a password.", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getContext(), "The password is invalid.", Toast.LENGTH_LONG).show();
                                 etPW.setError("password is incorrect ");
                                 etPW.requestFocus();
                                 etPW.setText("");
