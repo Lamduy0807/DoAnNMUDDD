@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="controller.minh.ProfileActivity">
+    tools:context="controller.minh.ProfileActivity"
+    android:background="#F1F9F9">
 
 
     <LinearLayout
@@ -59,11 +60,11 @@
             android:id="@+id/txtID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:visibility="gone"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:text="ID: 190000232"
-            android:textColor="@color/dgreen"
+            android:textColor="#606470"
             android:textStyle="bold" />
 
 
@@ -71,7 +72,7 @@
             android:id="@+id/line"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:visibility="gone"
             android:layout_marginTop="25dp"
             android:src="@drawable/line" />
 
@@ -81,7 +82,7 @@
             android:layout_height="wrap_content"
 
             android:text="Mail"
-            android:textColor="@color/dgreen"
+            android:textColor="#0F4C75"
             android:textStyle="bold" />
 
         <TextView
@@ -115,7 +116,7 @@
             android:layout_weight="5"
             android:gravity="right"
             android:text="Update Password"
-            android:textColor="@color/dgreen"
+            android:textColor="#0F4C75"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -137,8 +138,9 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/button_botron"
         android:text="Logout"
+        android:textColor="#323643"
         android:textAllCaps="false"
-        app:backgroundTint="@null"
+        app:backgroundTint="#93DEFF"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navipro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

@@ -478,8 +478,6 @@ public class HomeScreen extends AppCompatActivity {
         if (user != null) {
             checkUserPermission(user );
 
-
-
         } else {
             startActivity( new Intent(HomeScreen.this, MainActivity.class));
             finish();

@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,6 +41,7 @@ import java.util.HashMap;
 import controller.CreateTrip.CreateTrip1;
 import controller.mytravel.HomeScreen;
 import controller.mytravel.LoginScreen;
+import controller.mytravel.User;
 import nga.uit.edu.mytravel.R;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -56,6 +58,11 @@ public class ProfileActivity extends AppCompatActivity {
   private ImageView ivUpdatePass,ivSave;
   private BottomNavigationView bottomNavigationView ;
 
+  //
+  private DatabaseReference mData;
+    private String strUID;
+    private  String permission = "";
+
 
 
     @Override
@@ -64,6 +71,9 @@ public class ProfileActivity extends AppCompatActivity {
        setContentView(R.layout.activity_profile);
 
        mAuth = FirebaseAuth.getInstance();
+       FirebaseUser user = mAuth.getCurrentUser();
+       checkUserPermission(user);
+
        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
        storageReference = FirebaseStorage.getInstance().getReference().child("Profile Pic");
       btnLogout=findViewById(R.id.btnLogout);
@@ -250,5 +260,41 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
     }
-   
+
+    private void checkUserPermission(FirebaseUser user)
+    {
+        mData = FirebaseDatabase.getInstance().getReference("Users");
+
+        strUID = user.getUid();
+        mData.child(strUID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User mUser = snapshot.getValue(User.class);
+                if(mUser!=null) {
+                    permission = mUser.getPermission();
+
+                }
+                if(permission.equals("admin"))
+                {
+                   // startActivity(new Intent(HomeScreen.this, AdminScreenActivity.class));
+                    bottomNavigationView.setVisibility(View.INVISIBLE);
+
+                }
+                else {
+                    bottomNavigationView.setVisibility(View.VISIBLE);
+                    //startActivity(new Intent(getContext(), HomeScreen.class));
+                }
+
+
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+
 }

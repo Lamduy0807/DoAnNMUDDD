@@ -4,12 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:id="@+id/drawer_layout_admin"
     tools:context="controller.minh.AdminScreenActivity"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start"
-    >
+    tools:openDrawer="start">
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
@@ -21,16 +19,13 @@
 
     </com.google.android.material.navigation.NavigationView>
 
-
-
-
     <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="#FFFFFF">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,7 +33,6 @@
                 android:id="@+id/constraintLayout2"
                 android:layout_width="600dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
                 android:background="@drawable/bggg"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -63,11 +57,10 @@
                     android:layout_marginStart="32dp"
                     android:layout_marginLeft="32dp"
                     android:layout_marginTop="64dp"
-                    android:text="WelCome to MyTravel"
-                    android:textSize="20dp"
+                    android:text="Welcome to My Travel"
                     android:textColor="#FFCC66"
+                    android:textSize="20dp"
                     android:textStyle="bold"
-
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

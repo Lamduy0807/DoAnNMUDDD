@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EDEEF7">
+    android:background="#FAFAF6">
 
 
     <EditText
@@ -50,10 +50,10 @@
         android:gravity="center_horizontal"
         android:text="Login"
         android:textAlignment="center"
-        android:textColorLink="#B8B5FF"
+        android:textColorLink="#93DEFF"
         android:textSize="16dp"
         android:textStyle="bold"
-        app:backgroundTint="#B8B5FF"
+        app:backgroundTint="#93DEFF"
 
 
         app:layout_constraintBottom_toBottomOf="parent"
