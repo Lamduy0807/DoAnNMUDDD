@@ -15,7 +15,7 @@
     <color name="colorTextIcons">#FFFFFF</color>
     <color name="colorTextPrimary">#212121</color>
     <color name="colorTextSecondary">#757575</color>
-    <color name="colorBackground">#EEEEEE</color>
+    <color name="colorBackground">#F7F7F7</color>
 
     <color name="colorPrimary1">#0B144C</color>
     <color name="colorPrimaryDark1">#0B144C</color>
