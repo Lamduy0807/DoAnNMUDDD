@@ -11,36 +11,36 @@ Sau quá trình tìm hiểu và nắm bắt được tình hình trên, cùng v�
 ## Các chức năng
 1. Đăng nhập 
 
-![Đăng nhập](https://firebasestorage.googleapis.com/v0/b/todoapp-5df5f.appspot.com/o/dn.png?alt=media&token=0277e5a4-fe1e-403c-8250-74a81a253b47)
+![Đăng nhập](https://firebasestorage.googleapis.com/v0/b/todoapp-5df5f.appspot.com/o/dn.png?alt=media&token=7f8985de-5bd3-4679-9eb0-15920fcc91ad)
 
 2. Đăng ký
 
-![Đăng ký](https://firebasestorage.googleapis.com/v0/b/todoapp-5df5f.appspot.com/o/dk.png?alt=media&token=0ac964c5-916b-4cb8-b485-dca78331ceb1)
+![Đăng ký](https://firebasestorage.googleapis.com/v0/b/todoapp-5df5f.appspot.com/o/dk.png?alt=media&token=676ceb41-0dfb-47f6-869a-28671f0fcc65)
 
 3. Đăng xuất
 
-![Đăng xuất](https://firebasestorage.googleapis.com/v0/b/todoapp-5df5f.appspot.com/o/pro.png?alt=media&token=3c8e81f5-09a2-489b-af25-cc7344b71c56)
+![Đăng xuất](https://firebasestorage.googleapis.com/v0/b/todoapp-5df5f.appspot.com/o/pro.png?alt=media&token=6de105c9-2dcd-425f-aaec-e229a4e4eca1)
 
 4. Chọn tỉnh, địa điểm
 
-![Chọn tỉnh](https://firebasestorage.googleapis.com/v0/b/todoapp-5df5f.appspot.com/o/chontinh.png?alt=media&token=a3a9f9f4-d369-4d53-ac2e-f2f891694e23)
-![Chọn Địa điểm](https://firebasestorage.googleapis.com/v0/b/todoapp-5df5f.appspot.com/o/chondiadiem.png?alt=media&token=9626a96f-e3af-45d3-99b5-c21d57bfadb2)
+![Chọn tỉnh](https://firebasestorage.googleapis.com/v0/b/todoapp-5df5f.appspot.com/o/chontinh.png?alt=media&token=f92aab45-e7b2-4505-a15a-0d6c31e4e77d)
+![Chọn Địa điểm](https://firebasestorage.googleapis.com/v0/b/todoapp-5df5f.appspot.com/o/chondiadiem.png?alt=media&token=2baafd58-dfb6-4c46-8e22-58c09ebfe46e)
 
 5. Đánh giá địa điểm
 
-![Đánh giá địa điểm](https://firebasestorage.googleapis.com/v0/b/todoapp-5df5f.appspot.com/o/bl.png?alt=media&token=9552a5a2-4ace-4e03-8d24-fe20daea16f5)
+![Đánh giá địa điểm](https://firebasestorage.googleapis.com/v0/b/todoapp-5df5f.appspot.com/o/bl.png?alt=media&token=e39460b0-8922-48aa-8a1b-37851b262ce5)
 
 6. Đổi ảnh đại diện
 
-![alt](https://firebasestorage.googleapis.com/v0/b/todoapp-5df5f.appspot.com/o/pro.png?alt=media&token=3c8e81f5-09a2-489b-af25-cc7344b71c56)
+![alt](https://firebasestorage.googleapis.com/v0/b/todoapp-5df5f.appspot.com/o/pro.png?alt=media&token=6de105c9-2dcd-425f-aaec-e229a4e4eca1)
 
 7. Đổi mật khẩu
 
-![alt](https://firebasestorage.googleapis.com/v0/b/todoapp-5df5f.appspot.com/o/mhht.png?alt=media&token=07f27e49-e3bc-4f21-94e2-45ae6044212c)
+![Đổi mật khẩu](https://firebasestorage.googleapis.com/v0/b/todoapp-5df5f.appspot.com/o/doimk.png?alt=media&token=e0081f82-61c8-43eb-b898-89a9306574c6)
 
 8. Quên mật khẩu 
 
-![alt](https://firebasestorage.googleapis.com/v0/b/todoapp-5df5f.appspot.com/o/mhht.png?alt=media&token=07f27e49-e3bc-4f21-94e2-45ae6044212c)
+![Quên mật khẩu](https://firebasestorage.googleapis.com/v0/b/todoapp-5df5f.appspot.com/o/quenmk.png?alt=media&token=6a9fbe02-24ba-4993-b4d4-74393861a785)
 
 ## Thư viện và công nghệ
 1. Công nghệ:
