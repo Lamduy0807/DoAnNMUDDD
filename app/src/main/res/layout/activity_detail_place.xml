@@ -159,6 +159,7 @@
             android:layout_marginRight="24dp"
             android:text="Share"
             android:textSize="6dp"
+
             android:backgroundTint="#185ADB"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
