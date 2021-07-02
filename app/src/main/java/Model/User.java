@@ -1,4 +1,4 @@
-package controller.mytravel;
+package Model;
 
 public class User {
 //    private String Name ,Email, PassWord, Phone, UserName;

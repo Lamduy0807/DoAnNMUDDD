@@ -1,6 +1,4 @@
-package controller.CreateTrip;
-
-import com.google.android.gms.maps.model.LatLng;
+package Model;
 
 import java.io.Serializable;
 

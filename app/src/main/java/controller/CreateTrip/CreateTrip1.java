@@ -12,8 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import controller.minh.ProfileActivity;
-import controller.mytravel.HomeScreen;
+import controller.Profile.ProfileActivity;
+import controller.Home.HomeScreen;
 import nga.uit.edu.mytravel.R;
 
 public class CreateTrip1 extends AppCompatActivity {

@@ -1,9 +1,7 @@
-package controller.mytravel;
+package controller.Home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import controller.CreateTrip.CreateTrip1;
-import controller.CreateTrip.Trip6Activity;
 import nga.uit.edu.mytravel.R;
 
 import android.app.ActivityOptions;

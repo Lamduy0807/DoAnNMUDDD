@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="controller.minh.ProfileActivity"
+    tools:context="controller.Profile.ProfileActivity"
     android:background="#F1F9F9">
 
 
@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <controller.minh.CircleImageView
+        <controller.Profile.CircleImageView
             android:id="@+id/img"
             android:layout_width="150dp"
             android:layout_height="150dp"

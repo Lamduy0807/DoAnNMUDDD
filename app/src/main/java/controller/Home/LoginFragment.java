@@ -1,11 +1,21 @@
-package controller.mytravel;
+package controller.Home;
 
-import android.net.Uri;
+import android.app.Dialog;
+import android.content.Intent;
+
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,58 +24,156 @@ import androidx.fragment.app.Fragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-import java.util.HashMap;
 
+import Model.User;
+import controller.Admin.AdminScreenActivity;
 import nga.uit.edu.mytravel.R;
 
-public class RegisterFragment extends Fragment {
-    EditText etMail, etPW, etRPW;
+public class LoginFragment extends Fragment {
+    EditText etMail, etPW;
+    TextView btnforgot;
     float v = 0;
-    ExtendedFloatingActionButton btnRe;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference databaseReference;
-    CircularProgressIndicator progressIndicator;
-    private String PERMISION = "user";
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ViewGroup root = (ViewGroup) inflater .inflate(R.layout.register_tab,container,false);
-        etMail = root.findViewById(R.id.rEmail);
-        etPW = root.findViewById(R.id.rPW);
-        etRPW = root.findViewById(R.id.rePW);
-        btnRe = root.findViewById(R.id.btnRegister);
-        progressIndicator = root.findViewById(R.id.ppbarRe);
-        setanimation();
-        btnRe.setOnClickListener(view->{
-            progressIndicator.setVisibility(View.VISIBLE);
-            createuser();
-        });
+    ExtendedFloatingActionButton btn;
 
+    ///Phân Quyền
+    String strUID="";
+    private DatabaseReference mData;
+    public  String permission = "";
+
+
+    @Override
+    public View onCreateView( LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
+        ViewGroup root = (ViewGroup) inflater .inflate(R.layout.login_tab,container,false);
+
+        etMail = root.findViewById(R.id.Email);
+        etPW = root.findViewById(R.id.PW);
+        btn = root.findViewById(R.id.btnLogin);
+        SetAnimation();
+        btnforgot = root.findViewById(R.id.forgot);
+        btnforgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialog();
+            }
+        });
+        btn.setOnClickListener(view->{
+            login();
+
+        });
         return root;
     }
+    private void openDialog() {
+        final Dialog dialog = new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.layout_dialog_forgotpassword);
 
-    private void createuser() {
-        if(!validateEmail()||!validatePass()||!validateRePass())
+        Window window =dialog.getWindow();
+        if(window == null)
+        {
+            return;
+        }
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        WindowManager.LayoutParams windowattribute = window.getAttributes();
+        windowattribute.gravity = Gravity.CENTER;
+        window.setAttributes(windowattribute);
+
+        EditText etReEmail = dialog.findViewById(R.id.reEmail);
+        Button btnCancel = dialog.findViewById(R.id.btncancel);
+        Button btnSend = dialog.findViewById(R.id.btnsend);
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        btnSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String email = etReEmail.getText().toString();
+                mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful())
+                        {
+                            Toast.makeText(getContext(),"Check your email to reset your password",Toast.LENGTH_LONG).show();
+                            dialog.dismiss();
+                        }else {
+                            Toast.makeText(getContext(),"Try again, something went wrong",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+            }
+        });
+        dialog.show();
+    }
+    private void checkUserPermission(FirebaseUser user)
+    {
+        mData = FirebaseDatabase.getInstance().getReference("Users");
+
+        strUID = user.getUid();
+        mData.child(strUID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User mUser = snapshot.getValue(User.class);
+                if(mUser!=null) {
+                    permission = mUser.getPermission();
+
+                }
+                if(permission.equals("admin"))
+                {
+                    startActivity(new Intent(getContext(), AdminScreenActivity.class));
+
+                }
+                else {
+                    startActivity(new Intent(getContext(), HomeScreen.class));
+                }
+
+
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void login() {
+        if(!validateEmail()||!validatePass())
             return;
         else {
             String email = etMail.getText().toString().trim();
             String PW = etPW.getText().toString().trim();
-            mAuth.createUserWithEmailAndPassword(email, PW).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
+            mAuth.signInWithEmailAndPassword(email, PW).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
+
                     if (task.isSuccessful()) {
-                        Saveuser(mAuth.getUid(),PERMISION);
-                        UploadAvatar();
-                        Toast.makeText(getContext(), "User register successfully!", Toast.LENGTH_LONG).show();
+                        Log.d("test", "success");
+                        Toast.makeText(getActivity(), "Logining...", Toast.LENGTH_LONG).show();
+                        /*startActivity(new Intent(getContext(), HomeScreen.class));*/
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        checkUserPermission(user);
                     }
-                    else {
+                    else
+                    {
                         String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();
                         switch (errorCode) {
 
@@ -88,7 +196,7 @@ public class RegisterFragment extends Fragment {
                                 break;
 
                             case "ERROR_WRONG_PASSWORD":
-                                Toast.makeText(getContext(), "The password is invalid or the user does not have a password.", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getContext(), "The password is invalid.", Toast.LENGTH_LONG).show();
                                 etPW.setError("password is incorrect ");
                                 etPW.requestFocus();
                                 etPW.setText("");
@@ -125,7 +233,7 @@ public class RegisterFragment extends Fragment {
                                 break;
 
                             case "ERROR_USER_NOT_FOUND":
-                                Toast.makeText(getContext(), "There is no user record corresponding to this identifier. The user may have been deleted.", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getContext(), "There is no user record corresponding to this identifier.", Toast.LENGTH_LONG).show();
                                 break;
 
                             case "ERROR_INVALID_USER_TOKEN":
@@ -144,18 +252,9 @@ public class RegisterFragment extends Fragment {
 
                         }
                     }
-                    progressIndicator.setVisibility(View.GONE);
                 }
             });
         }
-    }
-
-    private void UploadAvatar() {
-
-        String MyUri = "https://firebasestorage.googleapis.com/v0/b/doannmuddd-2c6f2.appspot.com/o/Profile%20Pic%2Favt.png?alt=media&token=37e2b084-8b67-4cf0-86b7-253f5aeef533";
-        HashMap<String,Object> userMap = new HashMap<>();
-        userMap.put("image",MyUri);
-        databaseReference.child(mAuth.getCurrentUser().getUid()).updateChildren(userMap);
     }
 
     private Boolean validatePass()
@@ -171,7 +270,6 @@ public class RegisterFragment extends Fragment {
             etPW.setError("Password must be longer than 6 characters!");
             return false;
         }
-
         else
         {
             return true;
@@ -198,40 +296,16 @@ public class RegisterFragment extends Fragment {
             return true;
         }
     }
-
-    private Boolean validateRePass() {
-
-        String RPass = etRPW.getText().toString();
-        String Pass = etRPW.getText().toString();
-        if (RPass.isEmpty()) {
-            etRPW.setError("Field can not be empty!");
-            return false;
-        } else if (!RPass.matches(Pass)) {
-            etRPW.setError("Retype Password and Password are difference");
-            return false;
-        } else {
-            return true;
-        }
-    }
-    private void Saveuser(String uid, String permission) {
-
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("Users");
-        User user = new User(permission);
-        databaseReference.child(uid).setValue(user);
-    }
-    public void setanimation()
+    public void SetAnimation()
     {
         etMail.setTranslationX(800);
         etPW.setTranslationX(800);
-        etRPW.setTranslationX(800);
 
         etMail.setAlpha(v);
         etPW.setAlpha(v);
-        etRPW.setAlpha(v);
 
         etMail.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
         etPW.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
-        etRPW.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
     }
+
 }

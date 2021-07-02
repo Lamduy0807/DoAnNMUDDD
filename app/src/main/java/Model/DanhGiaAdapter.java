@@ -1,12 +1,9 @@
-package controller.CreateTrip;
+package Model;
 
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,8 +21,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-import controller.minh.CircleImageView;
-import controller.minh.ProfileActivity;
+import controller.Profile.CircleImageView;
 import nga.uit.edu.mytravel.R;
 
 public class DanhGiaAdapter extends RecyclerView.Adapter<DanhGiaAdapter.DanhGiaViewHolder> {

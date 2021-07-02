@@ -1,7 +1,6 @@
-package controller.mytravel;
+package controller.Home;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
@@ -9,7 +8,6 @@ import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
@@ -26,7 +24,6 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,14 +36,17 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import Model.ImgSlide;
+import Model.ImgSlideAdapter;
+import Model.TravelLocation;
+import Model.TravelLocationAdapter;
+import Model.User;
 import controller.CreateTrip.CreateTrip1;
-import controller.CreateTrip.CreateTrip2;
 import controller.CreateTrip.DetailPlaceActivity;
-import controller.CreateTrip.Location;
-import controller.CreateTrip.Place;
+import Model.Location;
 import controller.CreateTrip.Trip6Activity;
-import controller.minh.AdminScreenActivity;
-import controller.minh.ProfileActivity;
+import controller.Admin.AdminScreenActivity;
+import controller.Profile.ProfileActivity;
 import nga.uit.edu.mytravel.R;
 
 public class HomeScreen extends AppCompatActivity {

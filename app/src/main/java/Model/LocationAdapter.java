@@ -1,4 +1,4 @@
-    package controller.CreateTrip;
+    package Model;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,21 +13,18 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.makeramen.roundedimageview.RoundedImageView;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import nga.uit.edu.mytravel.R;
 
-    public class LocationAdapter extends RecyclerView.Adapter<controller.CreateTrip.LocationAdapter.LocationViewHolder> implements Filterable{
+    public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.LocationViewHolder> implements Filterable{
 
     private Context context;
 
     private List<Location> locations;
     private List<Location> locationListFull;
 
-    private LocationListener locationListener;
     private int checkedPosition = 0; // = -1: no selection
 
 

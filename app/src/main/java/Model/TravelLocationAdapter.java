@@ -1,4 +1,4 @@
-package controller.mytravel;
+package Model;
 
 import android.content.Context;
 import android.content.Intent;

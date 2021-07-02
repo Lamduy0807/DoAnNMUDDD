@@ -26,9 +26,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import Model.Location;
+import Model.LocationAdapter;
 import nga.uit.edu.mytravel.R;
-
-public class CreateTrip2 extends AppCompatActivity implements LocationListener {
+public class CreateTrip2 extends AppCompatActivity  {
     private LocationAdapter locationAdapter;
     private Button btAdd;
     private List<Location> locationList;
@@ -86,10 +87,7 @@ public class CreateTrip2 extends AppCompatActivity implements LocationListener {
         });
     }
 
-    @Override
-    public void onLocationAction(Boolean isselected) {
-            btAdd.setVisibility(View.VISIBLE);
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -1,4 +1,4 @@
-package controller.CreateTrip;
+package Model;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +20,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import controller.CreateTrip.DetailPlaceActivity;
+import controller.CreateTrip.Trip6Activity;
 import nga.uit.edu.mytravel.R;
 
 public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder> implements Serializable, Filterable {
@@ -57,7 +59,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
             public void onClick(View v) {
                 Intent intent=new Intent(context, DetailPlaceActivity.class);
                 intent.putExtra("title", mPlace.getTitle());
-                intent.putExtra("strName",Trip6Activity.path );
+                intent.putExtra("strName", Trip6Activity.path );
                 context.startActivity(intent);
             }
         });
@@ -119,6 +121,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
             txtTitle=itemView.findViewById(R.id.txtTitlePlace);
             txtAddressPlace=itemView.findViewById(R.id.txtAddressPlace);
             imgPlace=itemView.findViewById(R.id.myImageView);
+
 
         }
 

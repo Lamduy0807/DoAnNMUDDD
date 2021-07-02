@@ -20,9 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyTravel"
         android:usesCleartextTraffic="true">
-        <activity android:name="controller.minh.AdminAddPlaceActivity"></activity>
-        <activity android:name="controller.minh.AdminScreenActivity" />
-        <activity android:name="controller.mytravel.LoginScreen" />
+        <activity android:name="controller.Admin.AdminAddPlaceActivity"></activity>
+        <activity android:name="controller.Admin.AdminScreenActivity" />
+        <activity android:name="controller.Home.LoginScreen" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -37,22 +37,22 @@
         <activity
             android:name="controller.CreateTrip.Trip6Activity"
             android:parentActivityName="controller.CreateTrip.CreateTrip2" />
-        <activity android:name="controller.mytravel.HomeScreen">
+        <activity android:name="controller.Home.HomeScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="controller.minh.ProfileActivity" />
+        <activity android:name="controller.Profile.ProfileActivity" />
         <activity
-            android:name="controller.minh.ChangePasswordActivity"
-            android:parentActivityName="controller.minh.ProfileActivity" />
+            android:name="controller.Profile.ChangePasswordActivity"
+            android:parentActivityName="controller.Profile.ProfileActivity" />
         <activity android:name="controller.CreateTrip.CreateTrip1" />
         <activity
             android:name="controller.CreateTrip.CreateTrip2"
             android:parentActivityName="controller.CreateTrip.CreateTrip1" />
-        <activity android:name="controller.mytravel.MainActivity" />
+        <activity android:name="controller.Home.MainActivity" />
     </application>
 
 </manifest>
