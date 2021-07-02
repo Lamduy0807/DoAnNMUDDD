@@ -37,15 +37,14 @@
 
         <TextView
             android:id="@+id/txtTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="365dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="4dp"
             android:singleLine="false"
             android:text="Title"
             android:textColor="@color/black"
-            android:textSize="21sp"
+            android:textSize="23sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgPlace" />
@@ -66,6 +65,7 @@
 
         <ImageView
             android:id="@+id/gpsImageView"
+            android:layout_marginTop="4dp"
             android:layout_width="25dp"
             android:layout_height="22dp"
             android:layout_marginStart="20dp"
@@ -79,17 +79,16 @@
             android:id="@+id/txtAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="5dp"
             android:ems="20"
+
             android:layout_marginRight="20dp"
             android:text="Address"
             android:textSize="14sp"
             android:textStyle="normal"
             android:singleLine="false"
             app:layout_constraintStart_toEndOf="@+id/gpsImageView"
-            app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/txtInfo" />
 
         <TextView
             android:id="@+id/textView"
@@ -98,6 +97,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="4dp"
+            android:textSize="18sp"
             android:text="Description"
             android:textColor="@color/black"
             android:textStyle="bold"
@@ -132,7 +132,7 @@
             android:layout_marginTop="8dp"
             android:text="Evaluation"
             android:textColor="@color/black"
-            android:textSize="21sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtDescription" />
@@ -140,11 +140,12 @@
         <EditText
             android:id="@+id/edtDanhGia"
             android:layout_width="365dp"
-            android:layout_height="42dp"
-            android:layout_marginStart="20dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="8dp"
             android:hint="Share your experience"
+            android:singleLine="false"
             android:paddingRight="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -158,8 +159,7 @@
             android:layout_marginEnd="24dp"
             android:layout_marginRight="24dp"
             android:text="Share"
-            android:textSize="6dp"
-
+            android:textSize="8dp"
             android:backgroundTint="#185ADB"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
