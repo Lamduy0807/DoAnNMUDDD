@@ -14,7 +14,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    tools:context="controller.minh.AdminAddPlaceActivity">
+    tools:context="controller.Admin.AdminAddPlaceActivity">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout

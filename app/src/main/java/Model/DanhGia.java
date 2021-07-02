@@ -1,4 +1,4 @@
-package controller.CreateTrip;
+package Model;
 
 public class DanhGia {
     private String uid;

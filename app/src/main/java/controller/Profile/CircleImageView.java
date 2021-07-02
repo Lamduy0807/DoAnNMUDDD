@@ -1,4 +1,4 @@
-package controller.minh;
+package controller.Profile;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -11,7 +11,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.widget.ImageView;
+
 public class CircleImageView extends androidx.appcompat.widget.AppCompatImageView {
     public CircleImageView(Context context) {
         super(context);

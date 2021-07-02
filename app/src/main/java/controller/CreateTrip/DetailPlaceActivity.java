@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -42,6 +41,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import Model.DanhGia;
+import Model.DanhGiaAdapter;
+import Model.Place;
 import nga.uit.edu.mytravel.R;
 
 public class DetailPlaceActivity extends AppCompatActivity {

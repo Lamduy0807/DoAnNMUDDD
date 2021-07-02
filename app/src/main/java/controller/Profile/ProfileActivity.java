@@ -1,4 +1,4 @@
-package controller.minh;
+package controller.Profile;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -39,9 +39,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
 
 import controller.CreateTrip.CreateTrip1;
-import controller.mytravel.HomeScreen;
-import controller.mytravel.LoginScreen;
-import controller.mytravel.User;
+import controller.Home.HomeScreen;
+import controller.Home.LoginScreen;
+import Model.User;
 import nga.uit.edu.mytravel.R;
 
 public class ProfileActivity extends AppCompatActivity {

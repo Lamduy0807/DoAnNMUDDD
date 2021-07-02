@@ -1,4 +1,4 @@
-package controller.mytravel;
+package Model;
 
 public class TravelLocation {
     public String title, location;
