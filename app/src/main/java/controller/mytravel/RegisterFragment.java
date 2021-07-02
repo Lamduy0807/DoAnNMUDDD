@@ -1,5 +1,6 @@
 package controller.mytravel;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 import nga.uit.edu.mytravel.R;
 
@@ -59,6 +62,7 @@ public class RegisterFragment extends Fragment {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         Saveuser(mAuth.getUid(),PERMISION);
+                        UploadAvatar();
                         Toast.makeText(getContext(), "User register successfully!", Toast.LENGTH_LONG).show();
                     }
                     else {
@@ -145,6 +149,15 @@ public class RegisterFragment extends Fragment {
             });
         }
     }
+
+    private void UploadAvatar() {
+
+        String MyUri = "https://firebasestorage.googleapis.com/v0/b/doannmuddd-2c6f2.appspot.com/o/Profile%20Pic%2Favt.png?alt=media&token=37e2b084-8b67-4cf0-86b7-253f5aeef533";
+        HashMap<String,Object> userMap = new HashMap<>();
+        userMap.put("image",MyUri);
+        databaseReference.child(mAuth.getCurrentUser().getUid()).updateChildren(userMap);
+    }
+
     private Boolean validatePass()
     {
 

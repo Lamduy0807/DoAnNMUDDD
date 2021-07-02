@@ -166,8 +166,8 @@ public class LoginFragment extends Fragment {
 
                     if (task.isSuccessful()) {
                         Log.d("test", "success");
-                        /*Toast.makeText(getActivity(), "Logining...", Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(getContext(), HomeScreen.class));*/
+                        Toast.makeText(getActivity(), "Logining...", Toast.LENGTH_LONG).show();
+                        /*startActivity(new Intent(getContext(), HomeScreen.class));*/
                         FirebaseUser user = mAuth.getCurrentUser();
                         checkUserPermission(user);
                     }
