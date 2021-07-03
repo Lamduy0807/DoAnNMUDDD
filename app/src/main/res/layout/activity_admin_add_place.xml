@@ -212,7 +212,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="Latitude"
+                android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
@@ -222,6 +224,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="Longitude"
+                android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_enter_latitude" />
