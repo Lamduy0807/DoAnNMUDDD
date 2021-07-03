@@ -58,10 +58,10 @@ public class ProfileActivity extends AppCompatActivity {
   private ImageView ivUpdatePass,ivSave;
   private BottomNavigationView bottomNavigationView ;
 
-  //
+  //Admin
   private DatabaseReference mData;
-    private String strUID;
-    private  String permission = "";
+  private String strUID;
+  private  String permission = "";
 
 
 
@@ -76,12 +76,11 @@ public class ProfileActivity extends AppCompatActivity {
 
        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
        storageReference = FirebaseStorage.getInstance().getReference().child("Profile Pic");
-      btnLogout=findViewById(R.id.btnLogout);
+       btnLogout=findViewById(R.id.btnLogout);
       bottomNavigationView = findViewById(R.id.bottom_navipro);
       SetBottomNavigationBar();
        profilePic=findViewById(R.id.img);
        changePic=findViewById(R.id.btnChangePic);
-//       ivSave=findViewById(R.id.ivSave);
        txtEmail=findViewById(R.id.txtmail);
        txtEmail.setText(mAuth.getCurrentUser().getEmail());
        txtID=findViewById(R.id.txtID);
@@ -104,18 +103,11 @@ public class ProfileActivity extends AppCompatActivity {
        changePic.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-//               Intent openGallerryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-//               startActivityForResult(openGallerryIntent,1000);
                CropImage.activity().setAspectRatio(1,1).start(ProfileActivity.this);
 
            }
        });
-//       ivSave.setOnClickListener(new View.OnClickListener() {
-//           @Override
-//           public void onClick(View v) {
-//               uploadProfileImage();
-//           }
-//       });
+
 
        getUserInfo();
 
@@ -188,23 +180,7 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-//        if(requestCode==1000){
-//            if(resultCode== RESULT_OK && data!= null){
-//                imageUri = data.getData();
-//                profilePic.setImageURI(imageUri);
-//                Toast.makeText(this, "Update Sucess, Please click Save button.", Toast.LENGTH_SHORT).show();
-//                AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-//                alertDialog.setTitle("Save change?");
-//                alertDialog.setPositiveButton("Save", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        uploadProfileImage();
-//                    }
-//                });
-//                alertDialog.show();
-//            }
-//
-//        }
+
         if(requestCode==CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
             if(resultCode== RESULT_OK && data!= null){
                 CropImage.ActivityResult result = CropImage.getActivityResult(data);
@@ -276,16 +252,9 @@ public class ProfileActivity extends AppCompatActivity {
                 }
                 if(permission.equals("admin"))
                 {
-                   // startActivity(new Intent(HomeScreen.this, AdminScreenActivity.class));
                     bottomNavigationView.setVisibility(View.INVISIBLE);
 
                 }
-                else {
-                    bottomNavigationView.setVisibility(View.VISIBLE);
-                    //startActivity(new Intent(getContext(), HomeScreen.class));
-                }
-
-
             }
 
 
