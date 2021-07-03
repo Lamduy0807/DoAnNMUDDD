@@ -3,6 +3,7 @@ package controller.Admin;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -229,6 +230,9 @@ public class AdminAddPlaceActivity extends AppCompatActivity {
         btnSavePlace = findViewById(R.id.btnSavePlace);
         btnCancelPlace = findViewById(R.id.btnCancelPlace);
         imgPlace = findViewById(R.id.imgPlace);
+
+        edt_latitude.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_NORMAL);
+        edt_longitude.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_NORMAL);
 
 
     }

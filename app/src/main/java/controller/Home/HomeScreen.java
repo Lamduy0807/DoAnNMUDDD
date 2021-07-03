@@ -267,9 +267,6 @@ public class HomeScreen extends AppCompatActivity {
 
     private void SetImgSlide() {
         List<ImgSlide> imgSlideList = new ArrayList<>();
-//        imgSlideList.add(new ImgSlide(R.drawable.hcm));
-//        imgSlideList.add(new ImgSlide(R.drawable.hn));
-//        imgSlideList.add(new ImgSlide(R.drawable.dn));
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("ImgSlide");
 
@@ -439,58 +436,7 @@ public class HomeScreen extends AppCompatActivity {
         viewPager2.setPageTransformer(compositePageTransformer);
     }
 
-    private void checkUserPermission(FirebaseUser user)
-    {
-        mData = FirebaseDatabase.getInstance().getReference("Users");
-
-        strUID = user.getUid();
-        mData.child(strUID).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User mUser = snapshot.getValue(User.class);
-                if(mUser!=null) {
-                    permission = mUser.getPermission();
-
-                }
-                if(permission.equals("admin"))
-                {
-                    startActivity(new Intent(HomeScreen.this, AdminScreenActivity.class));
-
-                }
-                else {
-                    //startActivity(new Intent(getContext(), HomeScreen.class));
-                }
 
 
-            }
-
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-
-
-    private void checkUserStatus() {
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        if (user != null) {
-            checkUserPermission(user );
-
-        } else {
-            startActivity( new Intent(HomeScreen.this, MainActivity.class));
-            finish();
-        }
-
-    }
-
-
-
-    @Override
-    public void onStart() {
-        checkUserStatus();
-        super.onStart();
-    }
 
 }
