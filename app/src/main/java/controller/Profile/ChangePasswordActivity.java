@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
 
 import nga.uit.edu.mytravel.R;
@@ -53,6 +54,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                             changePass(txtPass,txtNewPass,v);
                         }
                         else{
+                            edConfirmPass.setError("Confirm password not correct!");
                             Toast.makeText(ChangePasswordActivity.this, "Confirm password not correct", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -91,7 +93,78 @@ public class ChangePasswordActivity extends AppCompatActivity {
                         }
                     });
                 } else {
-                    Toast.makeText(ChangePasswordActivity.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(ChangePasswordActivity.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
+                    String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();
+                    switch (errorCode) {
+
+                        case "ERROR_INVALID_CUSTOM_TOKEN":
+                            Toast.makeText(ChangePasswordActivity.this, "The custom token format is incorrect. Please check the documentation.", Toast.LENGTH_LONG).show();
+                            break;
+
+                        case "ERROR_CUSTOM_TOKEN_MISMATCH":
+                            Toast.makeText(ChangePasswordActivity.this, "The custom token corresponds to a different audience.", Toast.LENGTH_LONG).show();
+                            break;
+
+                        case "ERROR_INVALID_CREDENTIAL":
+                            Toast.makeText(ChangePasswordActivity.this, "The supplied auth credential is malformed or has expired.", Toast.LENGTH_LONG).show();
+                            break;
+
+                        case "ERROR_INVALID_EMAIL":
+                            Toast.makeText(ChangePasswordActivity.this, "The email address is badly formatted.", Toast.LENGTH_LONG).show();
+
+                            break;
+
+                        case "ERROR_WRONG_PASSWORD":
+                            Toast.makeText(ChangePasswordActivity.this, "The password is invalid.", Toast.LENGTH_LONG).show();
+                            edPass.setError("password is incorrect ");
+                            edPass.requestFocus();
+                            edPass.setText("");
+                            break;
+
+                        case "ERROR_USER_MISMATCH":
+                            Toast.makeText(ChangePasswordActivity.this, "The supplied credentials do not correspond to the previously signed in user.", Toast.LENGTH_LONG).show();
+                            break;
+
+                        case "ERROR_REQUIRES_RECENT_LOGIN":
+                            Toast.makeText(ChangePasswordActivity.this, "This operation is sensitive and requires recent authentication. Log in again before retrying this request.", Toast.LENGTH_LONG).show();
+                            break;
+
+                        case "ERROR_ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL":
+                            Toast.makeText(ChangePasswordActivity.this, "An account already exists with the same email address but different sign-in credentials. Sign in using a provider associated with this email address.", Toast.LENGTH_LONG).show();
+                            break;
+
+
+                        case "ERROR_CREDENTIAL_ALREADY_IN_USE":
+                            Toast.makeText(ChangePasswordActivity.this, "This credential is already associated with a different user account.", Toast.LENGTH_LONG).show();
+                            break;
+
+                        case "ERROR_USER_DISABLED":
+                            Toast.makeText(ChangePasswordActivity.this, "The user account has been disabled by an administrator.", Toast.LENGTH_LONG).show();
+                            break;
+
+                        case "ERROR_USER_TOKEN_EXPIRED":
+                            Toast.makeText(ChangePasswordActivity.this, "The user\\'s credential is no longer valid. The user must sign in again.", Toast.LENGTH_LONG).show();
+                            break;
+
+                        case "ERROR_USER_NOT_FOUND":
+                            Toast.makeText(ChangePasswordActivity.this, "There is no user record corresponding to this identifier.", Toast.LENGTH_LONG).show();
+                            break;
+
+                        case "ERROR_INVALID_USER_TOKEN":
+                            Toast.makeText(ChangePasswordActivity.this, "The user\\'s credential is no longer valid. The user must sign in again.", Toast.LENGTH_LONG).show();
+                            break;
+
+                        case "ERROR_OPERATION_NOT_ALLOWED":
+                            Toast.makeText(ChangePasswordActivity.this, "This operation is not allowed. You must enable this service in the console.", Toast.LENGTH_LONG).show();
+                            break;
+
+                        case "ERROR_WEAK_PASSWORD":
+                            Toast.makeText(ChangePasswordActivity.this, "The given password is invalid.", Toast.LENGTH_LONG).show();
+                            edPass.setError("The password is invalid it must 6 characters at least");
+                            edPass.requestFocus();
+                            break;
+
+                    }
                 }
             }
         });
