@@ -166,11 +166,16 @@ public class LoginFragment extends Fragment {
                 public void onComplete(@NonNull Task<AuthResult> task) {
 
                     if (task.isSuccessful()) {
-                        Log.d("test", "success");
-                        Toast.makeText(getActivity(), "Logining...", Toast.LENGTH_LONG).show();
-                        /*startActivity(new Intent(getContext(), HomeScreen.class));*/
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        checkUserPermission(user);
+                        if(mAuth.getCurrentUser().isEmailVerified()){
+                            Log.d("test", "success");
+                            Toast.makeText(getActivity(), "Logining...", Toast.LENGTH_LONG).show();
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            checkUserPermission(user);
+                        }
+                        else
+                        {
+                            Toast.makeText(getActivity(), "Please verify your email address", Toast.LENGTH_LONG).show();
+                        }
                     }
                     else
                     {
