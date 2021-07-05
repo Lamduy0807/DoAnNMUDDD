@@ -231,8 +231,8 @@ public class AdminAddPlaceActivity extends AppCompatActivity {
         btnCancelPlace = findViewById(R.id.btnCancelPlace);
         imgPlace = findViewById(R.id.imgPlace);
 
-        edt_latitude.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_NORMAL);
-        edt_longitude.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_NORMAL);
+        edt_latitude.setInputType(InputType.TYPE_CLASS_NUMBER |  InputType.TYPE_NUMBER_FLAG_DECIMAL);
+        edt_longitude.setInputType(InputType.TYPE_CLASS_NUMBER |  InputType.TYPE_NUMBER_FLAG_DECIMAL);
 
 
     }
