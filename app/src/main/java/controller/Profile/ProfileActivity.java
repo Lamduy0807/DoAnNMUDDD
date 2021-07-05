@@ -9,6 +9,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,6 +43,7 @@ import controller.CreateTrip.CreateTrip1;
 import controller.Home.HomeScreen;
 import controller.Home.LoginScreen;
 import Model.User;
+import controller.Home.MainActivity;
 import nga.uit.edu.mytravel.R;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -114,6 +116,8 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
+
+
     private void signOutUser() {
         Intent intent = new Intent(ProfileActivity.this,LoginScreen.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -140,42 +144,42 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
-    private void uploadProfileImage() {
-       final ProgressDialog db = new ProgressDialog(this);
-       db.setTitle("Uploading");
-       db.setMessage("Please wait...");
-       db.show();
-       if(imageUri != null){
-           final StorageReference fileRef = storageReference
-                   .child(mAuth.getCurrentUser().getUid()+".jpg");
-           uploadTask = fileRef.putFile(imageUri);
-           uploadTask.continueWithTask(new Continuation() {
-               @Override
-               public Object then(@NonNull @NotNull Task task) throws Exception {
-                   if(!task.isSuccessful()){
-                       throw task.getException();
-                   }
-                   return fileRef.getDownloadUrl();
-               }
-           }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-               @Override
-               public void onComplete(@NonNull @NotNull Task<Uri> task) {
-                   if(task.isSuccessful()){
-                       Uri downloadUrl = task.getResult();
-                       MyUri = downloadUrl.toString();
-                       HashMap<String,Object> userMap = new HashMap<>();
-                       userMap.put("image",MyUri);
-                       databaseReference.child(mAuth.getCurrentUser().getUid()).updateChildren(userMap);
-                       db.dismiss();
-                   }
-               }
-           });
-       }
-       else{
-           db.dismiss();
-           Toast.makeText(this, "Image not selected", Toast.LENGTH_SHORT).show();
-       }
-    }
+//    private void uploadProfileImage() {
+//       final ProgressDialog db = new ProgressDialog(this);
+//       db.setTitle("Uploading");
+//       db.setMessage("Please wait...");
+//       db.show();
+//       if(imageUri != null){
+//           final StorageReference fileRef = storageReference
+//                   .child(mAuth.getCurrentUser().getUid()+".jpg");
+//           uploadTask = fileRef.putFile(imageUri);
+//           uploadTask.continueWithTask(new Continuation() {
+//               @Override
+//               public Object then(@NonNull @NotNull Task task) throws Exception {
+//                   if(!task.isSuccessful()){
+//                       throw task.getException();
+//                   }
+//                   return fileRef.getDownloadUrl();
+//               }
+//           }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+//               @Override
+//               public void onComplete(@NonNull @NotNull Task<Uri> task) {
+//                   if(task.isSuccessful()){
+//                       Uri downloadUrl = task.getResult();
+//                       MyUri = downloadUrl.toString();
+//                       HashMap<String,Object> userMap = new HashMap<>();
+//                       userMap.put("image",MyUri);
+//                       databaseReference.child(mAuth.getCurrentUser().getUid()).updateChildren(userMap);
+//                       db.dismiss();
+//                   }
+//               }
+//           });
+//       }
+//       else{
+//           db.dismiss();
+//           Toast.makeText(this, "Image not selected", Toast.LENGTH_SHORT).show();
+//       }
+//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
@@ -192,7 +196,8 @@ public class ProfileActivity extends AppCompatActivity {
                 alertDialog.setPositiveButton("Save", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        uploadProfileImage();
+                        Async async = new Async();
+                        async.execute(imageUri);
                     }
                 });
                 alertDialog.show();
@@ -265,5 +270,76 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
+
+    private class Async extends AsyncTask<Uri,Boolean,Void>{
+        Boolean check;
+        final ProgressDialog db = new ProgressDialog(ProfileActivity.this);
+        @Override
+        protected void onPreExecute() {
+
+            db.setTitle("Uploading");
+            db.setMessage("Please wait...");
+            db.show();
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+        }
+
+        @Override
+        protected void onProgressUpdate(Boolean... values) {
+            if(values[0] == true)
+            {
+                db.dismiss();
+                Toast.makeText(ProfileActivity.this, "Update avatar successfully!", Toast.LENGTH_SHORT).show();
+            }
+            else
+            {
+                db.dismiss();
+                Toast.makeText(ProfileActivity.this, "Image not selected", Toast.LENGTH_SHORT).show();
+            }
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected Void doInBackground(Uri... uris) {
+            if(uris[0] != null){
+
+                final StorageReference fileRef = storageReference
+                        .child(mAuth.getCurrentUser().getUid()+".jpg");
+                uploadTask = fileRef.putFile(uris[0]);
+                uploadTask.continueWithTask(new Continuation() {
+                    @Override
+                    public Object then(@NonNull @NotNull Task task) throws Exception {
+                        if(!task.isSuccessful()){
+                            throw task.getException();
+                        }
+                        return fileRef.getDownloadUrl();
+                    }
+                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<Uri> task) {
+                        if(task.isSuccessful()){
+                            Uri downloadUrl = task.getResult();
+                            MyUri = downloadUrl.toString();
+                            HashMap<String,Object> userMap = new HashMap<>();
+                            userMap.put("image",MyUri);
+                            databaseReference.child(mAuth.getCurrentUser().getUid()).updateChildren(userMap);
+                            check = true;
+                            publishProgress(check);
+                            MainActivity.IsChangeAvatar = true;
+                        }
+                    }
+                });
+            }
+            else{
+                check= false;
+                publishProgress(check);
+            }
+            return null;
+        }
+    };
 
 }

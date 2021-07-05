@@ -134,13 +134,16 @@ public class LoginFragment extends Fragment {
                     permission = mUser.getPermission();
 
                 }
-                if(permission.equals("admin"))
-                {
-                    startActivity(new Intent(getContext(), AdminScreenActivity.class));
+                if(MainActivity.IsChangeAvatar==false) {
+                    if (permission.equals("admin")) {
+                        startActivity(new Intent(getContext(), AdminScreenActivity.class));
+                    } else {
+                        startActivity(new Intent(getContext(), HomeScreen.class));
+                    }
 
                 }
-                else {
-                    startActivity(new Intent(getContext(), HomeScreen.class));
+                else if(MainActivity.IsChangeAvatar==true) {
+                    MainActivity.IsChangeAvatar=false;
                 }
 
 

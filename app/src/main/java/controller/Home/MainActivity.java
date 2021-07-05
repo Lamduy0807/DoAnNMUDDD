@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference mData;
     private String strUID;
     private  String permission = "";
+    public static Boolean IsChangeAvatar = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,15 +108,17 @@ public class MainActivity extends AppCompatActivity {
                 if(mUser!=null) {
                     permission = mUser.getPermission();
                 }
-                if(permission.equals("admin"))
-                {
-                    startActivity(new Intent(MainActivity.this, AdminScreenActivity.class));
-                }
-                else {
-                    startActivity(new Intent(MainActivity.this, HomeScreen.class));
-                }
+                if(IsChangeAvatar==false) {
+                    if (permission.equals("admin")) {
+                        startActivity(new Intent(MainActivity.this, AdminScreenActivity.class));
+                    } else {
+                        startActivity(new Intent(MainActivity.this, HomeScreen.class));
+                    }
 
-
+                }
+                else if(IsChangeAvatar==true) {
+                    IsChangeAvatar=false;
+                }
             }
 
 
