@@ -129,7 +129,7 @@ public class DetailPlaceActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(edtDanhGia.getText().toString().trim().equals(""))
                 {
-                    Toast.makeText(DetailPlaceActivity.this,"Hãy chia sẻ trải nghiệm của ban",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailPlaceActivity.this,"Please share your experience",Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
@@ -153,11 +153,11 @@ public class DetailPlaceActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<DocumentReference> task) {
                 if (task.isSuccessful())
                 {
-                    Toast.makeText(DetailPlaceActivity.this,"Đã đăng tải đánh giá của bạn",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailPlaceActivity.this,"Shared your comment successfully",Toast.LENGTH_SHORT).show();
 
                 }
                 else {
-                    Toast.makeText(DetailPlaceActivity.this,"Đăng tải đánh giá không thành công",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailPlaceActivity.this,"Fail to post your comment! Please try again!",Toast.LENGTH_SHORT).show();
 
                 }
             }
