@@ -46,6 +46,7 @@ public class RegisterFragment extends Fragment {
         btnRe.setOnClickListener(view->{
             progressIndicator.setVisibility(View.VISIBLE);
             createuser();
+
         });
 
         return root;
@@ -69,6 +70,12 @@ public class RegisterFragment extends Fragment {
                                             Saveuser(mAuth.getUid(),PERMISION);
                                             UploadAvatar();
                                             Toast.makeText(getContext(), "User register successfully! Please check your email for verification!", Toast.LENGTH_LONG).show();
+                                            etRPW.setText("");
+                                            etMail.setError(null);
+                                            etPW.setText("");
+                                            etMail.setText("");
+                                            etPW.setError(null);
+                                            etRPW.setError(null);
                                         }
                                         else
                                         {

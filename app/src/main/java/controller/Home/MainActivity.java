@@ -24,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import Model.User;
 import controller.Admin.AdminScreenActivity;
+import controller.Profile.ProfileActivity;
 import nga.uit.edu.mytravel.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private String strUID;
     private  String permission = "";
     public static Boolean IsChangeAvatar = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,11 +109,15 @@ public class MainActivity extends AppCompatActivity {
                 User mUser = snapshot.getValue(User.class);
                 if(mUser!=null) {
                     permission = mUser.getPermission();
+
+
                 }
                 if(IsChangeAvatar==false) {
                     if (permission.equals("admin")) {
+
                         startActivity(new Intent(MainActivity.this, AdminScreenActivity.class));
                     } else {
+
                         startActivity(new Intent(MainActivity.this, HomeScreen.class));
                     }
 
