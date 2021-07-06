@@ -64,7 +64,8 @@ public class AdminScreenActivity extends AppCompatActivity implements Navigation
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+
+            return ;
         }
     }
 
@@ -102,5 +103,7 @@ public class AdminScreenActivity extends AppCompatActivity implements Navigation
         startActivity(intent);
         finish();
     }
+
+
 
 }

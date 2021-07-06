@@ -64,6 +64,8 @@ public class ProfileActivity extends AppCompatActivity {
   private DatabaseReference mData;
   private String strUID;
   private  String permission = "";
+  private Boolean isAdmin ;
+
 
 
 
@@ -258,8 +260,8 @@ public class ProfileActivity extends AppCompatActivity {
                 if(permission.equals("admin"))
                 {
                     bottomNavigationView.setVisibility(View.INVISIBLE);
-
-                }
+                    isAdmin = true;
+                } else isAdmin = false;
             }
 
 
@@ -341,5 +343,15 @@ public class ProfileActivity extends AppCompatActivity {
             return null;
         }
     };
+
+    @Override
+    public void onBackPressed()
+    {
+        if (isAdmin == true)
+        {
+            super.onBackPressed();
+        } else
+        return ;
+    }
 
 }

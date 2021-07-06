@@ -77,4 +77,9 @@ public class CreateTrip1 extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public void onBackPressed()
+    {
+        return ;
+    }
 }
