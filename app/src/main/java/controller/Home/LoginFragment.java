@@ -268,7 +268,7 @@ public class LoginFragment extends Fragment {
     private Boolean validatePass()
     {
 
-        String Pass = etPW.getText().toString();
+        String Pass = etPW.getText().toString().trim();
         if(Pass.isEmpty())
         {
             etPW.setError("Field can not be empty!");
@@ -286,7 +286,7 @@ public class LoginFragment extends Fragment {
     }
     private Boolean validateEmail()
     {
-        String email = etMail.getText().toString();
+        String email = etMail.getText().toString().trim();
         String emailpatterns = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
         if(email.isEmpty())
@@ -296,7 +296,7 @@ public class LoginFragment extends Fragment {
         }
         else if(!email.matches(emailpatterns))
         {
-            etMail.setError("Ivalid email!");
+            etMail.setError("Invalid email!");
             return false;
         }
         else
